@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screen/home/sc_home.dart';
+import 'screen/splash/sc_splash.dart';
 
 class AppRouter {
   static const String HOME = '/home';
@@ -11,8 +12,8 @@ class AppRouter {
     switch (settings.name) {
       case HOME:
         return MaterialPageRoute(builder: (_) => HomeScreen());
-      // case SPLASH:
-      //   return MaterialPageRoute(builder: (_) => SplashScreen());
+      case SPLASH:
+        return MaterialPageRoute(builder: (_) => SplashScreen());
       // case LOGIN:
       //   return MaterialPageRoute(builder: (_) => LoginScreen());
       default:

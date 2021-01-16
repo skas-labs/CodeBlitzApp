@@ -1,5 +1,6 @@
 import 'package:code_blitz/app_config.dart';
 import 'package:code_blitz/presentation/screen/home/sc_home.dart';
+import 'package:code_blitz/presentation/screen/splash/sc_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
       ),
       onGenerateRoute: AppRouter.generateRoute,
-      home: HomeScreen(),
+      home: SplashScreen(),
     );
   }
 

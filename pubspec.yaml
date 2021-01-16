@@ -49,7 +49,7 @@ dev_dependencies:
   meta: ^1.2.4
   sprintf: "^4.0.0"
   # UI
-#  flutter_svg: ^0.19.2+1
+  flutter_svg: ^0.19.1
 
   # Bloc
   flutter_bloc: ^6.1.1
