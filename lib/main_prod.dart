@@ -9,9 +9,9 @@ void main() {
 
   runApp(
     AppConfig(
-      appName: "CodeBlitz Dev",
-      debugTag: true,
-      flavorName: "dev",
+      appName: "CodeBlitz",
+      debugTag: false,
+      flavorName: "prod",
       initialRoute: AppRouter.SPLASH,
       child: MyApp.runWidget(),
     ),
