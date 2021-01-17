@@ -38,9 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     radius: 5,
                     gradient: COLOR_CONST.GRADIENT_PRIMARY,
                     child: Text('continue as guest',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
+                        style: FONT_CONST.BOLD_WHITE_20.copyWith(
                           foreground: Paint()
                             ..shader = COLOR_CONST.GRADIENT_PRIMARY
                                 .createShader(
@@ -52,12 +50,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: UnicornButton(
                       radius: 5,
                       gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                      child: Text('Login Now',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                          )),
+                      child: Text('login now',
+                          style: FONT_CONST.BOLD_WHITE_20),
                       onPressed: null),
                 )
               ],
