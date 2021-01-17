@@ -5,9 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class WidgetLogoCodeBlitz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      'assets/logo_code_blitz.svg',
-      color: COLOR_CONST.WHITE,
+    return Image.asset(
+      'images/logo_code_blitz.png',
     );
   }
 }
