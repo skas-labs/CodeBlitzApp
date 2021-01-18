@@ -1,3 +1,4 @@
+import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
 import 'package:flutter/material.dart';
 
 class CustomDivider extends StatelessWidget {
@@ -7,8 +8,8 @@ class CustomDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Divider(
-      color: const Color.fromRGBO(243, 243, 243, 1),
+    return  Divider(
+      color: COLOR_CONST.DIVIDER,
       height: 1,
       thickness: 2,
       indent: 30,

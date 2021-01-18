@@ -5,20 +5,25 @@ import 'COLOR_CONST.dart';
 class FONT_CONST {
   static final REGULAR = TextStyle(
     fontFamily: 'Gilroy',
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w100,
   );
 
   static final MEDIUM = TextStyle(
     fontFamily: 'Gilroy',
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w200,
   );
 
   static final SEMIBOLD = TextStyle(
     fontFamily: 'Gilroy',
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w500,
   );
 
   static final BOLD = TextStyle(
+    fontFamily: 'Gilroy',
+    fontWeight: FontWeight.w700,
+  );
+
+  static final EXTRABOLD = TextStyle(
     fontFamily: 'Gilroy',
     fontWeight: FontWeight.w800,
   );
@@ -40,6 +45,7 @@ class FONT_CONST {
   //SEMI_BOLD
   static final SEMIBOLD_WHITE = SEMIBOLD.copyWith(color: COLOR_CONST.WHITE);
   static final SEMIBOLD_WHITE_10 = SEMIBOLD_WHITE.copyWith(fontSize: 10);
+  static final SEMIBOLD_WHITE_12 = SEMIBOLD_WHITE.copyWith(fontSize: 12);
   static final SEMIBOLD_WHITE_16 = SEMIBOLD_WHITE.copyWith(fontSize: 16);
   static final SEMIBOLD_WHITE_18 = SEMIBOLD_WHITE.copyWith(fontSize: 18);
 
@@ -49,4 +55,14 @@ class FONT_CONST {
   static final BOLD_WHITE_14 = BOLD_WHITE.copyWith(fontSize: 14);
   static final BOLD_WHITE_16 = BOLD_WHITE.copyWith(fontSize: 16);
   static final BOLD_WHITE_20 = BOLD_WHITE.copyWith(fontSize: 20);
+
+
+  //BOLD
+  static final EXTRABOLD_WHITE = EXTRABOLD.copyWith(color: COLOR_CONST.WHITE);
+  static final EXTRABOLD_WHITE_12 = EXTRABOLD_WHITE.copyWith(fontSize: 12);
+  static final EXTRABOLD_WHITE_14 = EXTRABOLD_WHITE.copyWith(fontSize: 14);
+  static final EXTRABOLD_WHITE_16 = EXTRABOLD_WHITE.copyWith(fontSize: 16);
+  static final EXTRABOLD_WHITE_20 = EXTRABOLD_WHITE.copyWith(fontSize: 20);
+  static final EXTRABOLD_WHITE_22 = EXTRABOLD_WHITE.copyWith(fontSize: 26);
+
 }

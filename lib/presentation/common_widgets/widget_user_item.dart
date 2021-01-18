@@ -1,3 +1,4 @@
+import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 
@@ -29,19 +30,23 @@ class UserItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    displayName,
-                    maxLines: 1,
+                  UnicornText(
+                    text: displayName,
+                    style: FONT_CONST.EXTRABOLD_WHITE_20,
+                    gradient: COLOR_CONST.GRADIENT_PRIMARY,
                     overflow: TextOverflow.ellipsis,
-                    style: FONT_CONST.BOLD_WHITE_20,
-                    textAlign: TextAlign.center,
+                    align: TextAlign.center,
+                    maxLines: 1,
                   ),
                   Text(
                     "@$username • 700 CR",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: FONT_CONST.BOLD_WHITE_16,
+                    style: FONT_CONST.BOLD_WHITE_16.copyWith(
+                      color: COLOR_CONST.YELLOW
+                    ),
                     textAlign: TextAlign.center,
+
                   )
                 ],
               ),

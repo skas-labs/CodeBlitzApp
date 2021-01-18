@@ -61,17 +61,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       "current title",
-                      style: TextStyle(fontSize: 12),
+                      style: FONT_CONST.SEMIBOLD_WHITE_12,
                     ),
-                    const Text(
+                    Text(
                       "required",
-                      style: TextStyle(fontSize: 12),
+                      style: FONT_CONST.SEMIBOLD_WHITE_12,
                     ),
-                    const Text(
+                    Text(
                       "next goal",
-                      style: TextStyle(fontSize: 12),
+                      style: FONT_CONST.SEMIBOLD_WHITE_12,
                     )
                   ],
                 ),
@@ -81,10 +81,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "1300 CR",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    Expanded(
+                      child: UnicornButton(
+                          radius: 10,
+                          gradient: COLOR_CONST.GRADIENT_SECONDARY,
+                          child: Text('Junior Dev'.toUpperCase(),
+                              style: FONT_CONST.BOLD_WHITE_14),
+                          onPressed: null,
+                          height: 30),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 26.0, right: 26.0),
+                      child: UnicornText(
+                        text: "1300 CR",
+                        style: FONT_CONST.EXTRABOLD_WHITE_16,
+                        gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                      ),
+                    ),
+                    Expanded(
+                      child: UnicornButton(
+                          radius: 10,
+                          gradient: COLOR_CONST.GRADIENT_SECONDARY,
+                          child: Text('Senior Dev'.toUpperCase(),
+                              style: FONT_CONST.BOLD_WHITE_14),
+                          onPressed: null,
+                          height: 30),
                     ),
                   ],
                 ),
@@ -93,11 +114,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 30),
                 child: LinearPercentIndicator(
                   animation: true,
-                  lineHeight: 20.0,
+                  lineHeight: 10.0,
                   animationDuration: 2500,
                   percent: 0.8,
                   linearStrokeCap: LinearStrokeCap.roundAll,
-                  progressColor: Colors.green,
+                  linearGradient: COLOR_CONST.GRADIENT_SECONDARY,
                 ),
               ),
               CustomDivider(),
@@ -110,20 +131,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                           text: '10.3K',
-                          style: TextStyle(
-                              color: COLOR_CONST.PRIMARY,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+                          style: FONT_CONST.EXTRABOLD_WHITE_22.copyWith(
+                            foreground: Paint()
+                              ..shader = COLOR_CONST.GRADIENT_BLUE.createShader(
+                                  (new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
+                          ),
                           children: <TextSpan>[
-                            const TextSpan(
-                              text: "\nFollowers",
-                            ),
+                            TextSpan(
+                                text: "\nFOLLOWING",
+                                style: FONT_CONST.REGULAR_WHITE_10),
                           ]),
                     ),
                     Container(
                       height: 60,
                       child: VerticalDivider(
-                        color: const Color.fromRGBO(243, 243, 243, 1),
+                        color: COLOR_CONST.DIVIDER,
                         width: 2,
                         thickness: 2,
                       ),
@@ -132,20 +154,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                           text: '10.3K',
-                          style: TextStyle(
-                              color: COLOR_CONST.PRIMARY,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+                          style: FONT_CONST.EXTRABOLD_WHITE_22.copyWith(
+                            foreground: Paint()
+                              ..shader = COLOR_CONST.GRADIENT_BLUE.createShader(
+                                  (new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
+                          ),
                           children: <TextSpan>[
-                            const TextSpan(
-                              text: "\nFollowers",
-                            ),
+                            TextSpan(
+                                text: "\nCODE WARS",
+                                style: FONT_CONST.REGULAR_WHITE_10),
                           ]),
                     ),
                     Container(
                       height: 60,
                       child: VerticalDivider(
-                        color: const Color.fromRGBO(243, 243, 243, 1),
+                        color: COLOR_CONST.DIVIDER,
                         width: 2,
                         thickness: 2,
                       ),
@@ -153,15 +176,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
-                          text: '10.3K',
-                          style: TextStyle(
-                              color: COLOR_CONST.PRIMARY,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+                          text: '1.5K',
+                          style: FONT_CONST.EXTRABOLD_WHITE_22.copyWith(
+                            foreground: Paint()
+                              ..shader = COLOR_CONST.GRADIENT_BLUE.createShader(
+                                  (new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
+                          ),
                           children: <TextSpan>[
-                            const TextSpan(
-                              text: "\nFollowers",
-                            ),
+                            TextSpan(
+                                text: "\nFOLLOWERS",
+                                style: FONT_CONST.REGULAR_WHITE_10),
                           ]),
                     ),
                   ],
@@ -171,8 +195,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 alignment: Alignment.topLeft,
                 padding: const EdgeInsets.fromLTRB(30, 30, 30, 20),
-                child: Text("statistics",
-                    style: Theme.of(context).textTheme.headline6),
+                child: Text("statistics", style: FONT_CONST.BOLD_WHITE_16),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 30, left: 30),

@@ -37,13 +37,11 @@ class _SplashScreenState extends State<SplashScreen> {
                     strokeWidth: 1,
                     radius: 5,
                     gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                    child: Text('continue as guest',
-                        style: FONT_CONST.BOLD_WHITE_20.copyWith(
-                          foreground: Paint()
-                            ..shader = COLOR_CONST.GRADIENT_PRIMARY
-                                .createShader(
-                                    (new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
-                        )),
+                    child: UnicornText(
+                      text: 'continue as guest',
+                      style: FONT_CONST.BOLD_WHITE_20,
+                      gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                    ),
                     onPressed: null),
                 Padding(
                   padding: const EdgeInsets.only(top: 20),

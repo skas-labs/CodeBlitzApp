@@ -18,11 +18,11 @@ class ProgressWithText extends StatelessWidget {
         LinearPercentIndicator(
           width: MediaQuery.of(context).size.width * progress,
           animation: true,
-          lineHeight: 16.0,
+          lineHeight: 10.0,
           animationDuration: 2500,
           percent: 0.8,
           linearStrokeCap: LinearStrokeCap.roundAll,
-          progressColor: Colors.green,
+          linearGradient: COLOR_CONST.GRADIENT_RED,
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 10, 0, 30),
@@ -30,10 +30,12 @@ class ProgressWithText extends StatelessWidget {
             text: TextSpan(
                 text: primaryText,
                 style: FONT_CONST.BOLD_WHITE_14
-                    .copyWith(color: COLOR_CONST.PRIMARY),
+                    ,
                 children: <TextSpan>[
                   TextSpan(
                     text: "\n$secondaryText",
+                      style: FONT_CONST.REGULAR_WHITE_14
+
                   ),
                 ]),
           ),

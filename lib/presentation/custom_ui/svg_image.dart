@@ -14,7 +14,7 @@ class MySvgImage extends StatelessWidget {
       @required this.width,
       @required this.height,
       this.color = Colors.white,
-      this.applyColorFilter = true});
+      this.applyColorFilter = false});
 
   @override
   Widget build(BuildContext context) {
