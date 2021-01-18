@@ -1,6 +1,7 @@
 import 'package:code_blitz/app_config.dart';
 import 'package:code_blitz/model/repo/user_repository.dart';
 import 'package:code_blitz/presentation/screen/home/sc_home.dart';
+import 'package:code_blitz/presentation/screen/login/sc_login.dart';
 import 'package:code_blitz/presentation/screen/splash/sc_splash.dart';
 import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
 import 'package:flutter/material.dart';
@@ -19,17 +20,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: config.debugTag,
       theme: ThemeData(
-        brightness: Brightness.light,
-        fontFamily: 'Gilroy',
-        scaffoldBackgroundColor: COLOR_CONST.PRIMARY
-      ),
+          brightness: Brightness.light,
+          fontFamily: 'Gilroy',
+          scaffoldBackgroundColor: COLOR_CONST.PRIMARY),
       onGenerateRoute: AppRouter.generateRoute,
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is Uninitialized) {
             return SplashScreen();
-            // } else if (state is Unauthenticated) {
-            //   return LoginScreen();
+          } else if (state is Unauthenticated) {
+            return LoginScreen();
           } else if (state is Authenticated) {
             return HomeScreen();
           }
@@ -63,11 +63,12 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) =>
-            AuthenticationBloc(userRepository: userRepository)
-              ..add(AppStarted()),
+                AuthenticationBloc(userRepository: userRepository)
+                  ..add(AppStarted()),
           ),
         ],
         child: MyApp(),
       ),
-    );  }
+    );
+  }
 }

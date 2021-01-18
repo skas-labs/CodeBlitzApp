@@ -26,7 +26,7 @@ class UserRepository {
   // }
 
   Future<bool> isSignedIn() async {
-    return true;
+    return false;
   }
 
   Future<String> getUser() async {
