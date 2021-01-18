@@ -1,7 +1,4 @@
-
-
 class UserRepository {
-
   UserRepository();
 
   // Future<void> signInWithCredentials(String email, String password) {
