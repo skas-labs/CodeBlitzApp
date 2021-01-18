@@ -23,31 +23,41 @@ class _TabBarMaterialWidgetState extends State<TabBarMaterialWidget> {
       child: IconButton(icon: Icon(Icons.no_cell), onPressed: null),
     );
 
-    return BottomAppBar(
-      color: COLOR_CONST.PRIMARY,
-      shape: CircularNotchedRectangle(),
-      notchMargin: 8,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          buildTabItem(
-            index: 0,
-            icon: Icon(Icons.search),
-          ),
-          buildTabItem(
-            index: 1,
-            icon: Icon(Icons.mail_outline),
-          ),
-          placeholder,
-          buildTabItem(
-            index: 2,
-            icon: Icon(Icons.account_circle),
-          ),
-          buildTabItem(
-            index: 3,
-            icon: Icon(Icons.settings),
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 10,
           ),
         ],
+      ),
+      child: BottomAppBar(
+        color: COLOR_CONST.PRIMARY,
+        shape: CircularNotchedRectangle(),
+        notchMargin: 8,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            buildTabItem(
+              index: 0,
+              icon: Icon(Icons.search),
+            ),
+            buildTabItem(
+              index: 1,
+              icon: Icon(Icons.mail_outline),
+            ),
+            placeholder,
+            buildTabItem(
+              index: 2,
+              icon: Icon(Icons.account_circle),
+            ),
+            buildTabItem(
+              index: 3,
+              icon: Icon(Icons.settings),
+            ),
+          ],
+        ),
       ),
     );
   }

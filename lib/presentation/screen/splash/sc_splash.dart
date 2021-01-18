@@ -50,8 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: UnicornButton(
                       radius: 5,
                       gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                      child: Text('login now',
-                          style: FONT_CONST.BOLD_WHITE_20),
+                      child: Text('login now', style: FONT_CONST.BOLD_WHITE_20),
                       onPressed: null),
                 )
               ],

@@ -2,6 +2,7 @@ import 'package:code_blitz/app_config.dart';
 import 'package:code_blitz/model/repo/user_repository.dart';
 import 'package:code_blitz/presentation/screen/home/sc_home.dart';
 import 'package:code_blitz/presentation/screen/splash/sc_splash.dart';
+import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         fontFamily: 'Gilroy',
+        scaffoldBackgroundColor: COLOR_CONST.PRIMARY
       ),
       onGenerateRoute: AppRouter.generateRoute,
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(

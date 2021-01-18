@@ -37,6 +37,8 @@ dependencies:
 
   #format date time and other formats
   intl: ^0.16.1
+  percent_indicator: ^2.1.9
+
 
   # local storage
   shared_preferences: ^0.5.12+4
