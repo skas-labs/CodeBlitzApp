@@ -1,6 +1,4 @@
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
-import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
-import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {

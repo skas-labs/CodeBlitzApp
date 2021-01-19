@@ -32,6 +32,9 @@ dependencies:
   json_annotation: any
   carousel_slider: ^2.3.1
 
+  # UI
+  flutter_neumorphic: ^3.0.3
+
   #object builder
   freezed: ^0.12.7
 
@@ -74,11 +77,11 @@ flutter:
   fonts:
     - family: Gilroy
       fonts:
-        - asset: fonts/Gilroy-Regular.ttf
-        - asset: fonts/Gilroy-Medium.ttf
-        - asset: fonts/Gilroy-SemiBold.ttf
-        - asset: fonts/Gilroy-Bold.ttf
-        - asset: fonts/Gilroy-ExtraBold.ttf
+        - asset: fonts/Gilroy-Regular.otf
+        - asset: fonts/Gilroy-Medium.otf
+        - asset: fonts/Gilroy-SemiBold.otf
+        - asset: fonts/Gilroy-Bold.otf
+        - asset: fonts/Gilroy-ExtraBold.otf
   assets:
     - assets/
     - images/

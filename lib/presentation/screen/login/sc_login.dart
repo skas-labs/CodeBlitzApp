@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: FONT_CONST.BOLD_WHITE_20,
                       gradient: COLOR_CONST.GRADIENT_PRIMARY,
                     ),
-                    onPressed: null),
+                    onPressed: openSignUp),
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: UnicornButton(
@@ -62,9 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void openLogin() {
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushNamed(context, AppRouter.LOGIN);
-    });
+  void openSignUp() {
+    Navigator.pushNamed(context, AppRouter.SIGNUP);
   }
 }
