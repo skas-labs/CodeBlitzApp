@@ -1,5 +1,6 @@
 import 'package:code_blitz/model/repo/home_repository.dart';
 import 'package:code_blitz/presentation/custom_ui/custom_ui.dart';
+import 'package:code_blitz/presentation/screen/home/home/dashboard_page.dart';
 import 'package:code_blitz/presentation/screen/home/profile/bloc.dart';
 import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
 
-  final pages = <Widget>[ProfileScreen()];
+  final pages = <Widget>[DashboardScreen(), ProfileScreen()];
 
   @override
   Widget build(BuildContext context) => MultiBlocProvider(
@@ -28,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Scaffold(
           extendBody: true,
           body: pages[index],
+          resizeToAvoidBottomPadding: false,
           bottomNavigationBar: TabBarMaterialWidget(
             index: index,
             onChangedTab: onChangedTab,

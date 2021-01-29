@@ -1,3 +1,4 @@
+import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
 import 'package:flutter/material.dart';
 
@@ -23,15 +24,15 @@ class _TabBarMaterialWidgetState extends State<TabBarMaterialWidget> {
       child: IconButton(icon: Icon(Icons.no_cell), onPressed: null),
     );
 
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.black,
-            blurRadius: 10,
-          ),
-        ],
-      ),
+    return NeumorphicContainer(
+      // decoration: BoxDecoration(
+      //   boxShadow: <BoxShadow>[
+      //     BoxShadow(
+      //       color: Colors.black,
+      //       blurRadius: 10,
+      //     ),
+      //   ],
+      // ),
       child: BottomAppBar(
         color: COLOR_CONST.PRIMARY,
         shape: CircularNotchedRectangle(),
