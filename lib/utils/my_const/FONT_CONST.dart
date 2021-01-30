@@ -43,6 +43,7 @@ class FONT_CONST {
   static final MEDIUM_WHITE_12 = MEDIUM_WHITE.copyWith(fontSize: 12);
   static final MEDIUM_WHITE_14 = MEDIUM_WHITE.copyWith(fontSize: 14);
   static final MEDIUM_WHITE_16 = MEDIUM_WHITE.copyWith(fontSize: 16);
+  static final MEDIUM_WHITE_18 = MEDIUM_WHITE.copyWith(fontSize: 18);
   static final MEDIUM_WHITE_22 = MEDIUM_WHITE.copyWith(fontSize: 22);
 
   //SEMI_BOLD
@@ -57,6 +58,7 @@ class FONT_CONST {
   static final BOLD_WHITE_12 = BOLD_WHITE.copyWith(fontSize: 12);
   static final BOLD_WHITE_14 = BOLD_WHITE.copyWith(fontSize: 14);
   static final BOLD_WHITE_16 = BOLD_WHITE.copyWith(fontSize: 16);
+  static final BOLD_WHITE_18 = BOLD_WHITE.copyWith(fontSize: 18);
   static final BOLD_WHITE_20 = BOLD_WHITE.copyWith(fontSize: 20);
   static final BOLD_WHITE_24 = BOLD_WHITE.copyWith(fontSize: 24);
 

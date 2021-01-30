@@ -1,11 +1,14 @@
 import 'package:code_blitz/model/repo/home_repository.dart';
+import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:code_blitz/presentation/custom_ui/custom_ui.dart';
-import 'package:code_blitz/presentation/screen/home/home/dashboard_page.dart';
+import 'package:code_blitz/presentation/screen/home/dashboard/bloc.dart';
 import 'package:code_blitz/presentation/screen/home/profile/bloc.dart';
-import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
+import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'dashboard/dashboard_page.dart';
+import 'friends/friends_page.dart';
 import 'profile/profile_page.dart';
 import 'widget_tab_bar.dart';
 
@@ -17,18 +20,49 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
 
-  final pages = <Widget>[DashboardScreen(), ProfileScreen()];
+  final pages = <Widget>[DashboardScreen(), FriendsScreen(), ProfileScreen()];
 
   @override
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
           BlocProvider(
               create: (context) =>
-                  ProfileBloc(homeRepository: HomeRepository()))
+                  ProfileBloc(homeRepository: HomeRepository())),
+          BlocProvider(
+              create: (context) =>
+                  DashboardBloc(homeRepository: HomeRepository())),
         ],
         child: Scaffold(
           extendBody: true,
-          body: pages[index],
+          body: SafeArea(
+              child: Column(children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30,30,30,0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  NeumorphicContainer(
+                    child: IconButton(
+                      icon: Image.asset("images/ic_settings.png",height: 28,width: 28,),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                  Text(index == 1 ? "home":"myu profile",style: FONT_CONST.BOLD_WHITE_20),
+                  NeumorphicContainer(
+                    child: IconButton(
+                      icon: Image.asset("images/ic_settings.png",height: 28,width: 28,),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(child: pages[index])
+          ])),
           resizeToAvoidBottomPadding: false,
           bottomNavigationBar: TabBarMaterialWidget(
             index: index,
