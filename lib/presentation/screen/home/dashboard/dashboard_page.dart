@@ -19,6 +19,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DashboardBloc, DashboardState>(
+      // buildWhen: (previous, current) {
+      //   return false;
+      // },
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
@@ -76,7 +79,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   gradient: COLOR_CONST.GRADIENT_PRIMARY,
                   child: Text('join a war', style: FONT_CONST.BOLD_WHITE_20),
                   onPressed: () {
-                    BlocProvider.of<DashboardBloc>(context).add(JoinMatch("hello"));
+                    BlocProvider.of<DashboardBloc>(context).add(JoinMatch(code : "hello"));
                   }),
             ),
             Container(
@@ -86,7 +89,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             Container(
               margin: const EdgeInsets.only(
-                  right: 105, left: 105),
+                  right: 105, left: 105,bottom: 40),
               child:        UnicornOutlineButton(
                   strokeWidth: 1,
                   radius: 10,

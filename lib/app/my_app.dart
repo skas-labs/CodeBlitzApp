@@ -1,9 +1,11 @@
 import 'package:code_blitz/app_config.dart';
+import 'package:code_blitz/model/repo/home_repository.dart';
 import 'package:code_blitz/model/repo/user_repository.dart';
 import 'package:code_blitz/presentation/screen/home/sc_home.dart';
 import 'package:code_blitz/presentation/screen/login/sc_login.dart';
 import 'package:code_blitz/presentation/screen/splash/sc_splash.dart';
 import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
+import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           brightness: Brightness.light,
           fontFamily: 'Gilroy',
+          cursorColor: COLOR_CONST.WHITE,
           scaffoldBackgroundColor: COLOR_CONST.PRIMARY),
       onGenerateRoute: AppRouter.generateRoute,
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
@@ -50,15 +53,18 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+  //Todo: Improve this
 
   static Widget runWidget() {
     WidgetsFlutterBinding.ensureInitialized();
     Bloc.observer = SimpleBlocDelegate();
 
     final UserRepository userRepository = UserRepository();
+    final HomeRepository homeRepository = HomeRepository();
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<UserRepository>(create: (context) => userRepository),
+        RepositoryProvider<HomeRepository>(create: (context) => homeRepository),
       ],
       child: MultiBlocProvider(
         providers: [

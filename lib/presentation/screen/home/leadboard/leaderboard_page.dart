@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class FriendsScreen extends StatefulWidget {
+class LeaderboardScreen extends StatefulWidget {
   @override
-  _FriendsScreenState createState() => _FriendsScreenState();
+  _LeaderboardScreenState createState() => _LeaderboardScreenState();
 }
 
-class _FriendsScreenState extends State<FriendsScreen> with SingleTickerProviderStateMixin {
+class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTickerProviderStateMixin {
 
   TabController _controller;
   int currentTabIndex = 0;
@@ -62,28 +62,7 @@ class _FriendsScreenState extends State<FriendsScreen> with SingleTickerProvider
         },
         child: Column(
           children: <Widget>[
-            SizedBox(height: 30),
-            NeumorphicContainer(
-              insets:
-              EdgeInsets.only(right: 30, left: 30, top: 15, bottom: 20),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
-                child: TextField(
-                  keyboardType: TextInputType.name,
-                  autocorrect: false,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'search usernames, names',
-                    hintStyle: FONT_CONST.MEDIUM_WHITE_16,
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: COLOR_CONST.WHITE,
-                    ),
-                  ),
-                  style: FONT_CONST.BOLD_WHITE_16,
-                ),
-              ),
-            ),
+            SizedBox(height: 20),
             _buildTabs(),
             CustomDivider(),
             _buildList(state)
@@ -133,10 +112,10 @@ class _FriendsScreenState extends State<FriendsScreen> with SingleTickerProvider
             controller: _controller,
             tabs: <Widget>[
               Tab(
-                text: 'followers',
+                text: 'global',
               ),
               Tab(
-                text: 'following',
+                text: 'college',
               ),
             ],
             onTap: (index) {},
