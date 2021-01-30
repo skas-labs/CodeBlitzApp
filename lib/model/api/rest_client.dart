@@ -4,10 +4,10 @@ import 'package:dio/dio.dart';
 
 part 'rest_client.g.dart';
 
-@RestApi(baseUrl: "https://api.codewar.org/")
+@RestApi(baseUrl: "http://localhost:3131")
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
-  @GET("/players/me")
+  @GET("/")
   Future<ProfileResponse> getProfileData();
 }

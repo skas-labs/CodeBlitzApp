@@ -1,5 +1,3 @@
-import 'package:code_blitz/model/repo/home_repository.dart';
-import 'package:code_blitz/model/repo/repo.dart';
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:code_blitz/presentation/custom_ui/custom_ui.dart';
 import 'package:code_blitz/presentation/screen/home/dashboard/bloc.dart';
@@ -32,8 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
+          //Todo : add event if tab is selected
           BlocProvider(
-              create: (context) => ProfileBloc(homeRepository: context.read())),
+              create: (context) => ProfileBloc(homeRepository: context.read())
+          ..add(LoadProfile())),
           BlocProvider(
               create: (context) =>
                   DashboardBloc(homeRepository: context.read())),

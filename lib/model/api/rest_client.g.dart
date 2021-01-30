@@ -9,7 +9,7 @@ part of 'rest_client.dart';
 class _RestClient implements RestClient {
   _RestClient(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    baseUrl ??= 'https://api.codewar.org/';
+    baseUrl ??= 'http://localhost:3131';
   }
 
   final Dio _dio;
@@ -21,7 +21,7 @@ class _RestClient implements RestClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<Map<String, dynamic>>('/players/me',
+    final _result = await _dio.request<Map<String, dynamic>>('/',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',

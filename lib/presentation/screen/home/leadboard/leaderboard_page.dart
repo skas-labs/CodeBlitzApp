@@ -3,22 +3,19 @@ import 'package:code_blitz/presentation/screen/home/profile/bloc.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 class LeaderboardScreen extends StatefulWidget {
   @override
   _LeaderboardScreenState createState() => _LeaderboardScreenState();
 }
 
-class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTickerProviderStateMixin {
-
+class _LeaderboardScreenState extends State<LeaderboardScreen>
+    with SingleTickerProviderStateMixin {
   TabController _controller;
   int currentTabIndex = 0;
 
-
   @override
   void initState() {
-
     _controller = TabController(
       length: 2,
       vsync: this,
@@ -31,7 +28,6 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTicker
     });
 
     super.initState();
-    BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
   }
 
   @override
@@ -102,31 +98,28 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTicker
 
   _buildTabs() {
     return DefaultTabController(
-      length: 2,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 30),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: TabBar(
-            isScrollable: true,
-            controller: _controller,
-            tabs: <Widget>[
-              Tab(
-                text: 'global',
-              ),
-              Tab(
-                text: 'college',
-              ),
-            ],
-            onTap: (index) {},
-            labelColor: COLOR_CONST.WHITE,
-            labelStyle: FONT_CONST.BOLD_WHITE_18,
-            unselectedLabelStyle: FONT_CONST.MEDIUM_WHITE_18,
-    ),
-        ),
-      )
-    );
+        length: 2,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 30),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: TabBar(
+              isScrollable: true,
+              controller: _controller,
+              tabs: <Widget>[
+                Tab(
+                  text: 'global',
+                ),
+                Tab(
+                  text: 'college',
+                ),
+              ],
+              onTap: (index) {},
+              labelColor: COLOR_CONST.WHITE,
+              labelStyle: FONT_CONST.BOLD_WHITE_18,
+              unselectedLabelStyle: FONT_CONST.MEDIUM_WHITE_18,
+            ),
+          ),
+        ));
   }
 }
-
-

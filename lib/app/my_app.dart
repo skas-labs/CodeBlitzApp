@@ -26,6 +26,8 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           fontFamily: 'Gilroy',
           cursorColor: COLOR_CONST.WHITE,
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
           scaffoldBackgroundColor: COLOR_CONST.PRIMARY),
       onGenerateRoute: AppRouter.generateRoute,
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(

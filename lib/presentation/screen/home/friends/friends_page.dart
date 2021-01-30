@@ -31,7 +31,6 @@ class _FriendsScreenState extends State<FriendsScreen> with SingleTickerProvider
     });
 
     super.initState();
-    BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
   }
 
   @override

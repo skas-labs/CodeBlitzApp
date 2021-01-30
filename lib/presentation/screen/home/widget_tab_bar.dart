@@ -68,24 +68,25 @@ class _TabBarMaterialWidgetState extends State<TabBarMaterialWidget> {
   }) {
     final isSelected = index == widget.index;
 
-    return Padding(
-        padding: const EdgeInsets.fromLTRB(8, 12, 8, 0),
-        child: Wrap(children: [
-          Column(children: [
-            IconButton(
-              iconSize: 30,
-              icon: icon,
-              onPressed: () => widget.onChangedTab(index),
-            ),
-            isSelected
-                ? SizedBox(
-                    width: 20,
-                    height: 3,
-                    child: Container(
-                        decoration: BoxDecoration(
-                            gradient: COLOR_CONST.GRADIENT_PRIMARY)))
-                : SizedBox(),
-          ]),
-        ]));
+    return Wrap(children: [
+      Column(children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: IconButton(
+            iconSize: 30,
+            icon: icon,
+            onPressed: () => widget.onChangedTab(index),
+          ),
+        ),
+        isSelected
+            ? SizedBox(
+                width: 20,
+                height: 3,
+                child: Container(
+                    decoration: BoxDecoration(
+                        gradient: COLOR_CONST.GRADIENT_PRIMARY)))
+            : SizedBox(),
+      ]),
+    ]);
   }
 }
