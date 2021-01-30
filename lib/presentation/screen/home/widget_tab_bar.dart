@@ -1,4 +1,3 @@
-import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
 import 'package:flutter/material.dart';
 
@@ -24,15 +23,15 @@ class _TabBarMaterialWidgetState extends State<TabBarMaterialWidget> {
       child: IconButton(icon: Icon(Icons.no_cell), onPressed: null),
     );
 
-    return NeumorphicContainer(
-      // decoration: BoxDecoration(
-      //   boxShadow: <BoxShadow>[
-      //     BoxShadow(
-      //       color: Colors.black,
-      //       blurRadius: 10,
-      //     ),
-      //   ],
-      // ),
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 10,
+          ),
+        ],
+      ),
       child: BottomAppBar(
         color: COLOR_CONST.PRIMARY,
         shape: CircularNotchedRectangle(),
@@ -42,20 +41,20 @@ class _TabBarMaterialWidgetState extends State<TabBarMaterialWidget> {
           children: [
             buildTabItem(
               index: 0,
-              icon: Icon(Icons.search),
+              icon: Image.asset("images/ic_home.png"),
             ),
             buildTabItem(
               index: 1,
-              icon: Icon(Icons.mail_outline),
+              icon: Image.asset("images/ic_leaderboard.png"),
             ),
             placeholder,
             buildTabItem(
               index: 2,
-              icon: Icon(Icons.account_circle),
+              icon: Image.asset("images/ic_profile.png"),
             ),
             buildTabItem(
               index: 3,
-              icon: Icon(Icons.settings),
+              icon: Image.asset("images/ic_friends.png"),
             ),
           ],
         ),
@@ -65,22 +64,28 @@ class _TabBarMaterialWidgetState extends State<TabBarMaterialWidget> {
 
   Widget buildTabItem({
     @required int index,
-    @required Icon icon,
+    @required Image icon,
   }) {
     final isSelected = index == widget.index;
 
-    return IconTheme(
-      data: IconThemeData(
-        color: isSelected ? Colors.red : Colors.black,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
-        child: IconButton(
-          iconSize: 30,
-          icon: icon,
-          onPressed: () => widget.onChangedTab(index),
-        ),
-      ),
-    );
+    return Padding(
+        padding: const EdgeInsets.fromLTRB(8, 12, 8, 0),
+        child: Wrap(children: [
+          Column(children: [
+            IconButton(
+              iconSize: 30,
+              icon: icon,
+              onPressed: () => widget.onChangedTab(index),
+            ),
+            isSelected
+                ? SizedBox(
+                    width: 20,
+                    height: 3,
+                    child: Container(
+                        decoration: BoxDecoration(
+                            gradient: COLOR_CONST.GRADIENT_PRIMARY)))
+                : SizedBox(),
+          ]),
+        ]));
   }
 }

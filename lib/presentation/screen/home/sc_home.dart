@@ -21,15 +21,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
-  final heading = ["","friends","my profile","leaderboard"];
-  final pages = <Widget>[DashboardScreen(), FriendsScreen(), ProfileScreen(),LeaderboardScreen()];
+  final heading = ["", "leaderboard", "my profile", "friends"];
+  final pages = <Widget>[
+    DashboardScreen(),
+    LeaderboardScreen(),
+    ProfileScreen(),
+    FriendsScreen()
+  ];
 
   @override
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) =>
-                  ProfileBloc(homeRepository: context.read())),
+              create: (context) => ProfileBloc(homeRepository: context.read())),
           BlocProvider(
               create: (context) =>
                   DashboardBloc(homeRepository: context.read())),
@@ -53,8 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {},
                     ),
                   ),
-                  Text(heading[index],
-                      style: FONT_CONST.BOLD_WHITE_20),
+                  Text(heading[index], style: FONT_CONST.BOLD_WHITE_20),
                   NeumorphicContainer(
                     child: IconButton(
                       icon: Image.asset(
