@@ -12,7 +12,7 @@ class OpenScreen extends DashboardEvent {}
 class JoinMatch extends DashboardEvent {
   final String code;
 
-  JoinMatch({this.code});
+  const JoinMatch({this.code});
 
   @override
   List<Object> get props => [code];
