@@ -11,6 +11,6 @@ class AuthRepository {
   }
 
   Future<String> sendOtp(String phoneno) async {
-    return client.sendOtp("{\"phno\": \"+91${phoneno}\" }");
+    return client.sendOtp("{\"phno\": \"${phoneno}\" }");
   }
 }

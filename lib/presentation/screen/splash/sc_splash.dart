@@ -15,12 +15,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: SizedBox(
-            width: 240,
-            child: WidgetLogoCodeBlitz(),
-          ),
+      body: Center(
+        child: SizedBox(
+          width: 240,
+          child: WidgetLogoCodeBlitz(),
         ),
       ),
     );

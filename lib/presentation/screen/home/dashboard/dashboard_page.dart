@@ -16,7 +16,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return BlocListener<DashboardBloc, DashboardState>(
         listener: (context, state) {
           final snackBar = SnackBar(
-            content: Text('Yay! A SnackBar!'),
+            content: const Text('Yay! A SnackBar!'),
             action: SnackBarAction(
               label: 'Undo',
               onPressed: () {
@@ -28,13 +28,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
         },
         child: SafeArea(
           child: Scaffold(
-            body: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  _buildContent(),
-                ],
-              ),
+            body: Column(
+              children: <Widget>[
+                _buildContent(),
+              ],
             ),
           ),
         ));
@@ -44,9 +41,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Expanded(
       child: ListView(
         shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: <Widget>[
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           SizedBox(width: 120, height: 100, child: WidgetLogoCodeBlitz()),
           Container(
             alignment: Alignment.center,
@@ -57,7 +54,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             child: Text("fight a war", style: FONT_CONST.REGULAR_WHITE_20),
           ),
           NeumorphicContainer(
-            insets: EdgeInsets.only(right: 55, left: 55, top: 15, bottom: 30),
+            insets:
+                const EdgeInsets.only(right: 55, left: 55, top: 15, bottom: 30),
             child: Padding(
               padding: const EdgeInsets.only(left: 15.0, top: 8, bottom: 8),
               child: TextField(
@@ -77,13 +75,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
           Container(
             margin: const EdgeInsets.only(right: 105, left: 105, top: 15),
             child: UnicornButton(
-                radius: 10,
-                gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                child: Text('join a war', style: FONT_CONST.BOLD_WHITE_20),
-                onPressed: () {
-                  BlocProvider.of<DashboardBloc>(context)
-                      .add(JoinMatch(code: "hello"));
-                }),
+              radius: 10,
+              gradient: COLOR_CONST.GRADIENT_PRIMARY,
+              onPressed: () {
+                BlocProvider.of<DashboardBloc>(context)
+                    .add(JoinMatch(code: "hello"));
+              },
+              child: Text('join a war', style: FONT_CONST.BOLD_WHITE_20),
+            ),
           ),
           Container(
             alignment: Alignment.center,
@@ -96,14 +95,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 strokeWidth: 1,
                 radius: 10,
                 gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                onPressed: () {
+                  BlocProvider.of<DashboardBloc>(context).add(CreateMatch());
+                },
                 child: UnicornText(
                   text: 'create a war',
                   style: FONT_CONST.BOLD_WHITE_20,
                   gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                ),
-                onPressed: () {
-                  BlocProvider.of<DashboardBloc>(context).add(CreateMatch());
-                }),
+                )),
           ),
         ],
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'screen/home/sc_home.dart';
 import 'screen/login/sc_login.dart';
 import 'screen/signup/sc_signup_home.dart';
+import 'screen/signup/sc_signup_otp.dart';
 import 'screen/signup/sc_signup_phone.dart';
 import 'screen/splash/sc_splash.dart';
 
@@ -12,19 +13,22 @@ class AppRouter {
   static const String LOGIN = '/login';
   static const String SIGNUP = '/signup';
   static const String SIGNUP_PHONE = '/signup_phone';
+  static const String SIGNUP_OTP = '/signup_otp';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case HOME:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return _createRoute(HomeScreen());
       case SPLASH:
         return MaterialPageRoute(builder: (_) => SplashScreen());
       case LOGIN:
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return _createRoute(LoginScreen());
       case SIGNUP:
-        return MaterialPageRoute(builder: (_) => SignUpHomeScreen());
+        return _createRoute(SignUpHomeScreen());
       case SIGNUP_PHONE:
-        return MaterialPageRoute(builder: (_) => SignUpPhoneScreen());
+        return _createRoute(SignUpPhoneScreen());
+      case SIGNUP_OTP:
+        return _createRoute(SignUpOtpScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
@@ -33,5 +37,24 @@ class AppRouter {
                   ),
                 ));
     }
+  }
+
+  static PageRouteBuilder<dynamic> _createRoute(Widget child) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => child,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        final end = Offset.zero;
+        final curve = Curves.ease;
+
+        final tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 }
