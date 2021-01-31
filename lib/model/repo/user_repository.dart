@@ -1,3 +1,5 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 class UserRepository {
   UserRepository();
 
@@ -26,7 +28,9 @@ class UserRepository {
   // }
 
   Future<bool> isSignedIn() async {
-    return false;
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String token = prefs.getString('access_token');
+    return token != null;
   }
 
   Future<String> getUser() async {

@@ -1,15 +1,26 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DioProvider {
   static Dio instance() {
     final dio = Dio();
 
-//    dio.interceptors.add(AuthInterceptor());
+    dio.interceptors.add(AuthInterceptor());
     dio.interceptors.add(HttpLogInterceptor());
 
     return dio;
+  }
+}
+
+class AuthInterceptor extends InterceptorsWrapper {
+  @override
+  Future onRequest(RequestOptions options) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    options.headers["Authorization"] =
+        "Bearer ${prefs.getString('access_token')}";
+    return options;
   }
 }
 
