@@ -15,5 +15,5 @@ abstract class RestClient {
   Future<String> sendOtp(@Body() String phoneno);
 
   @POST("/auth/otp/verify")
-  Future<String> verifyOtp(@Body() Map res);
+  Future<String> verifyOtp(@Body() String body);
 }

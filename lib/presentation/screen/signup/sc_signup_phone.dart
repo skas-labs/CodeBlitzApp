@@ -30,17 +30,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
     return Scaffold(
         body: BlocListener<SignUpBloc, SignUpState>(
       listener: (context, state) {
-        final snackBar = SnackBar(
-          content: const Text('Yay! A SnackBar!'),
-          action: SnackBarAction(
-            label: 'Undo',
-            onPressed: () {
-              // Some code to undo the change.
-            },
-          ),
-        );
-        Scaffold.of(context).showSnackBar(snackBar);
-        if(state is SignUpLoaded){
+        if (state is OtpSent) {
           Navigator.pushNamed(context, AppRouter.SIGNUP_OTP);
         }
       },
@@ -91,22 +81,24 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                   ),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               UnicornButton(
-                  radius: 5,
-                  gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                  child: Text('continue', style: FONT_CONST.BOLD_WHITE_20),
-                  onPressed: () {
-                    _signupBloc.add(SendOtp(phone: number));
-                  })
+                radius: 5,
+                gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                onPressed: () {
+                  _signupBloc.add(SendOtp(phone: number));
+                },
+                child: Text('continue', style: FONT_CONST.BOLD_WHITE_20),
+              )
             ],
           )),
     ));
   }
 
   void _onCountryChange(CountryCode code) {
-    countryCode =  code.toString();
+    countryCode = code.toString();
   }
+
   void onMobileChanged() {
     number = countryCode + _mobileController.text;
     _signupBloc.add(NumberChanged(phone: number));

@@ -1,7 +1,6 @@
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:code_blitz/presentation/router.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,14 +14,13 @@ class SignUpOtpScreen extends StatefulWidget {
 class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
   final TextEditingController _mobileController = TextEditingController();
   SignUpBloc _signupBloc;
-  String countryCode = "+91";
-  String number = "";
+  String response = "";
 
   @override
   void initState() {
     super.initState();
     _signupBloc = BlocProvider.of<SignUpBloc>(context);
-    _mobileController.addListener(onMobileChanged);
+    response = (_signupBloc.state as OtpSent).response;
   }
 
   @override
@@ -33,8 +31,11 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
         return current != next;
       },
       listener: (context, state) {
-        if (state is SignUpLoaded) {
-          Navigator.pushNamed(context, AppRouter.SIGNUP_PHONE);
+        if (state is OtpVerified) {
+          if (state.response.contains("true")) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, AppRouter.HOME, (r) => false);
+          }
         }
       },
       child: Container(
@@ -51,7 +52,7 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
                 ),
               ),
               Text(
-                "we sent an sms with a 4-digit code to ${(_signupBloc.state as SignUpLoaded).response.substring(9, 22)}",
+                "we sent an sms with a 4-digit code to ${response.substring(9, 22)}",
                 style: FONT_CONST.REGULAR_WHITE_16
                     .copyWith(color: COLOR_CONST.GREY),
               ),
@@ -60,21 +61,14 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
                 radius: 5,
                 gradient: COLOR_CONST.GRADIENT_PRIMARY,
                 onPressed: () {
-                  _signupBloc.add(SendOtp(phone: number));
+                  _signupBloc.add(VerifyOtp(
+                      body: response.replaceRange(response.length - 1,
+                          response.length, ", \"otp\":\"0000\" }")));
                 },
                 child: Text('verify now', style: FONT_CONST.BOLD_WHITE_20),
               )
             ],
           )),
     ));
-  }
-
-  void _onCountryChange(CountryCode code) {
-    countryCode = code.toString();
-  }
-
-  void onMobileChanged() {
-    number = countryCode + _mobileController.text;
-    _signupBloc.add(NumberChanged(phone: number));
   }
 }

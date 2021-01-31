@@ -25,7 +25,7 @@ class NumberChanged extends SignUpEvent {
 class SendOtp extends SignUpEvent {
   final String phone;
 
-  SendOtp({this.phone});
+  const SendOtp({this.phone});
 
   @override
   List<Object> get props => [phone];
@@ -33,5 +33,19 @@ class SendOtp extends SignUpEvent {
   @override
   String toString() {
     return 'SendOtp{phone: $phone}';
+  }
+}
+
+class VerifyOtp extends SignUpEvent {
+  final String body;
+
+  const VerifyOtp({this.body});
+
+  @override
+  List<Object> get props => [body];
+
+  @override
+  String toString() {
+    return 'VerifyOtp{phone: $body}';
   }
 }

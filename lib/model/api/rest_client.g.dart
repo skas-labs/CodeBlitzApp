@@ -52,13 +52,11 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<String> verifyOtp(res) async {
-    ArgumentError.checkNotNull(res, 'res');
+  Future<String> verifyOtp(body) async {
+    ArgumentError.checkNotNull(body, 'body');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(res ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
+    final _data = body;
     final _result = await _dio.request<String>('/auth/otp/verify',
         queryParameters: queryParameters,
         options: RequestOptions(

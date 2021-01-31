@@ -10,10 +10,10 @@ abstract class SignUpState extends Equatable {
 
 class DefaultState extends SignUpState {}
 
-class SignUpLoaded extends SignUpState {
+class OtpSent extends SignUpState {
   final String response;
 
-  const SignUpLoaded(this.response);
+  const OtpSent(this.response);
 
   @override
   List<Object> get props {
@@ -22,7 +22,23 @@ class SignUpLoaded extends SignUpState {
 
   @override
   String toString() {
-    return 'SignUpLoaded{response: $response}';
+    return 'OtpSent{response: $response}';
+  }
+}
+
+class OtpVerified extends SignUpState {
+  final String response;
+
+  const OtpVerified(this.response);
+
+  @override
+  List<Object> get props {
+    return [response];
+  }
+
+  @override
+  String toString() {
+    return 'OtpVerified{response: $response}';
   }
 }
 
