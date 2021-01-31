@@ -32,4 +32,42 @@ class _RestClient implements RestClient {
     final value = ProfileResponse.fromJson(_result.data);
     return value;
   }
+
+  @override
+  Future<String> sendOtp(phoneno) async {
+    ArgumentError.checkNotNull(phoneno, 'phoneno');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = phoneno;
+    final _result = await _dio.request<String>('/auth/otp',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = _result.data;
+    return value;
+  }
+
+  @override
+  Future<String> verifyOtp(res) async {
+    ArgumentError.checkNotNull(res, 'res');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(res ?? <String, dynamic>{});
+    _data.removeWhere((k, v) => v == null);
+    final _result = await _dio.request<String>('/auth/otp/verify',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = _result.data;
+    return value;
+  }
 }

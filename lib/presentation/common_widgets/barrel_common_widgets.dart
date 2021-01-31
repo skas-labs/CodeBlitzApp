@@ -6,3 +6,4 @@ export 'widget_user_item.dart';
 export 'widget_progress_with_text.dart';
 export 'widget_unicorn_text.dart';
 export 'widget_neumorphism_container.dart';
+export 'widget_back_button.dart';

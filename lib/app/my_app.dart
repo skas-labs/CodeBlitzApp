@@ -1,8 +1,10 @@
 import 'package:code_blitz/app_config.dart';
+import 'package:code_blitz/model/repo/auth_repository.dart';
 import 'package:code_blitz/model/repo/home_repository.dart';
 import 'package:code_blitz/model/repo/user_repository.dart';
 import 'package:code_blitz/presentation/screen/home/sc_home.dart';
 import 'package:code_blitz/presentation/screen/login/sc_login.dart';
+import 'package:code_blitz/presentation/screen/signup/bloc/bloc.dart';
 import 'package:code_blitz/presentation/screen/splash/sc_splash.dart';
 import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
@@ -64,6 +66,7 @@ class MyApp extends StatelessWidget {
 
     final UserRepository userRepository = UserRepository();
     final HomeRepository homeRepository = HomeRepository();
+    final AuthRepository authRepository = AuthRepository();
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<UserRepository>(create: (context) => userRepository),
@@ -76,6 +79,9 @@ class MyApp extends StatelessWidget {
                 AuthenticationBloc(userRepository: userRepository)
                   ..add(AppStarted()),
           ),
+          BlocProvider(
+            create: (context) => SignUpBloc(authRepository: AuthRepository()),
+          )
         ],
         child: MyApp(),
       ),

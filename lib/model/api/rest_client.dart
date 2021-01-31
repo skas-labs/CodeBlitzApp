@@ -10,4 +10,10 @@ abstract class RestClient {
 
   @GET("/")
   Future<ProfileResponse> getProfileData();
+
+  @POST("/auth/otp")
+  Future<String> sendOtp(@Body() String phoneno);
+
+  @POST("/auth/otp/verify")
+  Future<String> verifyOtp(@Body() Map res);
 }

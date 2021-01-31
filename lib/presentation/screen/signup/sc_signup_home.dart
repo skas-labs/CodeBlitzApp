@@ -1,6 +1,5 @@
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
-import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
-import 'package:code_blitz/utils/my_const/FONT_CONST.dart';
+import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 
 import '../../router.dart';
@@ -49,7 +48,8 @@ class SignUpHomeScreen extends StatelessWidget {
               child: UnicornButton(
                   radius: 5,
                   gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                  child: Text('phone number', style: FONT_CONST.BOLD_WHITE_20),
+                  child:
+                      Text('phone number', style: FONT_CONST.BOLD_WHITE_20),
                   onPressed: () {
                     Navigator.pushNamed(context, AppRouter.SIGNUP_PHONE);
                   }),
