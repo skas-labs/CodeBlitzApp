@@ -39,7 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildContent(ProfileState state) {
-    if (state is ProfileNotLoaded) {
+    if (state is ProfileLoaded) {
       return Expanded(
         child: RefreshIndicator(
           onRefresh: () async {

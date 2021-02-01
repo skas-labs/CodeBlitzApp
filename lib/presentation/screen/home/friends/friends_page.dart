@@ -1,5 +1,7 @@
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
+import 'package:code_blitz/presentation/custom_ui/custom_ui.dart';
 import 'package:code_blitz/presentation/screen/home/friends/bloc.dart';
+import 'package:code_blitz/presentation/screen/home/friends/widget_list_players.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,7 +58,7 @@ class _FriendsScreenState extends State<FriendsScreen>
     return Expanded(
       child: Column(
         children: <Widget>[
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
           NeumorphicContainer(
             insets:
                 const EdgeInsets.only(right: 30, left: 30, top: 15, bottom: 20),
@@ -89,15 +91,7 @@ class _FriendsScreenState extends State<FriendsScreen>
 
   Expanded _buildList(FriendsState state) {
     if (state is PlayersLoaded) {
-      return Expanded(
-          child: Column(
-        children: state.response
-            .map((e) => Text(
-                  e.name,
-                  style: FONT_CONST.BOLD_WHITE_20,
-                ))
-            .toList(),
-      ));
+      return Expanded(child: WidgetListPlayer(state.response));
     } else if (state is PlayersLoading) {
       return const Expanded(
         child: Center(
@@ -127,25 +121,30 @@ class _FriendsScreenState extends State<FriendsScreen>
           child: Align(
             alignment: Alignment.centerLeft,
             child: TabBar(
-              isScrollable: true,
-              controller: _controller,
-              // ignore: prefer_const_literals_to_create_immutables
-              tabs: <Widget>[
-                const Tab(
-                  text: 'followers',
-                ),
-                const Tab(
-                  text: 'following',
-                ),
-              ],
-              onTap: (index) {
-                _searchController.text = "";
-                _friendsBloc.add(TabChanged(index: index));
-              },
-              labelColor: COLOR_CONST.WHITE,
-              labelStyle: FONT_CONST.BOLD_WHITE_18,
-              unselectedLabelStyle: FONT_CONST.MEDIUM_WHITE_18,
-            ),
+                isScrollable: true,
+                controller: _controller,
+                // ignore: prefer_const_literals_to_create_immutables
+                tabs: <Widget>[
+                  const Tab(
+                    text: 'followers',
+                  ),
+                  const Tab(
+                    text: 'following',
+                  ),
+                ],
+                onTap: (index) {
+                  _searchController.text = "";
+                  _friendsBloc.add(TabChanged(index: index));
+                },
+                labelColor: COLOR_CONST.WHITE,
+                labelStyle: FONT_CONST.BOLD_WHITE_18,
+                unselectedLabelStyle: FONT_CONST.MEDIUM_WHITE_18,
+                indicatorSize: TabBarIndicatorSize.label,
+                indicator: RoundedRectIndicator(
+                    color: COLOR_CONST.WHITE,
+                    radius: 10,
+                    padding: 0,
+                    weight: 2.0)),
           ),
         ));
   }

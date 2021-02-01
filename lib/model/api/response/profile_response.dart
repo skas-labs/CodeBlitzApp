@@ -6,9 +6,10 @@ part 'profile_response.g.dart';
 class ProfileResponse {
   int id;
   String name;
+  String username;
 
   ProfileResponse(
-      {this.id, this.name,});
+      {this.id, this.name,this.username});
 
   factory ProfileResponse.fromJson(Map<String, dynamic> json) =>
       _$ProfileResponseFromJson(json);
