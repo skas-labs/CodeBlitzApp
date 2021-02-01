@@ -6,11 +6,11 @@ class NeumorphicContainer extends StatelessWidget {
   final Widget _child;
   final EdgeInsets _insets;
 
-  NeumorphicContainer({
+  const NeumorphicContainer({
     @required Widget child,
     EdgeInsets insets = const EdgeInsets.all(0),
-  })  : this._child = child,
-        this._insets = insets;
+  })  : _child = child,
+        _insets = insets;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class NeumorphicContainer extends StatelessWidget {
           shadowLightColorEmboss: COLOR_CONST.SHADOW_LIGHT,
           intensity: 0.60,
           boxShape: NeumorphicBoxShape.roundRect(
-              BorderRadius.all(Radius.circular(5))),
+              const BorderRadius.all(Radius.circular(5))),
         ),
         child: _child);
   }

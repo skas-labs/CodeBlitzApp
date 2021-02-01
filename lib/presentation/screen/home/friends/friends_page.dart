@@ -1,5 +1,5 @@
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
-import 'package:code_blitz/presentation/screen/home/profile/bloc.dart';
+import 'package:code_blitz/presentation/screen/home/friends/bloc.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,25 +14,30 @@ class _FriendsScreenState extends State<FriendsScreen>
   TabController _controller;
   int currentTabIndex = 0;
 
+  FriendsBloc _friendsBloc;
+  TextEditingController _searchController = TextEditingController();
+
   @override
   void initState() {
+    super.initState();
+    _friendsBloc = BlocProvider.of<FriendsBloc>(context);
+    _friendsBloc.add(OpenScreen());
+
+    _searchController.addListener(onSearchQueryChanged);
     _controller = TabController(
       length: 2,
       vsync: this,
     );
-
     _controller.addListener(() {
       setState(() {
         currentTabIndex = _controller.index;
       });
     });
-
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileBloc, ProfileState>(
+    return BlocBuilder<FriendsBloc, FriendsState>(
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
@@ -47,59 +52,59 @@ class _FriendsScreenState extends State<FriendsScreen>
     );
   }
 
-  Widget _buildContent(ProfileState state) {
+  Widget _buildContent(FriendsState state) {
     return Expanded(
-      child: RefreshIndicator(
-        onRefresh: () async {
-          BlocProvider.of<ProfileBloc>(context).add(RefreshProfile());
-        },
-        child: Column(
-          children: <Widget>[
-            const SizedBox(height: 30),
-            NeumorphicContainer(
-              insets: const EdgeInsets.only(
-                  right: 30, left: 30, top: 15, bottom: 20),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
-                child: TextField(
-                  keyboardType: TextInputType.name,
-                  autocorrect: false,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'search usernames, names',
-                    hintStyle: FONT_CONST.MEDIUM_WHITE_16,
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: COLOR_CONST.WHITE,
-                    ),
+      child: Column(
+        children: <Widget>[
+          const SizedBox(height: 30),
+          NeumorphicContainer(
+            insets:
+                const EdgeInsets.only(right: 30, left: 30, top: 15, bottom: 20),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
+              child: TextField(
+                keyboardType: TextInputType.name,
+                autocorrect: false,
+                controller: _searchController,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'search usernames, names',
+                  hintStyle: FONT_CONST.MEDIUM_WHITE_16,
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: COLOR_CONST.WHITE,
                   ),
-                  style: FONT_CONST.BOLD_WHITE_16,
                 ),
+                style: FONT_CONST.BOLD_WHITE_16,
               ),
             ),
-            _buildTabs(),
-            CustomDivider(),
-            _buildList(state)
-          ],
-        ),
+          ),
+          _buildTabs(),
+          CustomDivider(),
+          _buildList(state)
+        ],
       ),
     );
   }
 
-  Expanded _buildList(ProfileState state) {
-    if (state is ProfileNotLoaded) {
+  Expanded _buildList(FriendsState state) {
+    if (state is PlayersLoaded) {
+      return Expanded(
+          child: Column(
+        children: state.response
+            .map((e) => Text(
+                  e.name,
+                  style: FONT_CONST.BOLD_WHITE_20,
+                ))
+            .toList(),
+      ));
+    } else if (state is PlayersLoading) {
       return const Expanded(
         child: Center(
           child: CircularProgressIndicator(),
         ),
       );
-    } else if (state is ProfileLoading) {
-      return const Expanded(
-        child: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    } else if (state is ProfileNotLoaded) {
+    } else if (state is PlayersNotLoaded) {
       return const Expanded(
         child: Center(
           child: Text('Cannot load data'),
@@ -133,12 +138,25 @@ class _FriendsScreenState extends State<FriendsScreen>
                   text: 'following',
                 ),
               ],
-              onTap: (index) {},
+              onTap: (index) {
+                _searchController.text = "";
+                _friendsBloc.add(TabChanged(index: index));
+              },
               labelColor: COLOR_CONST.WHITE,
               labelStyle: FONT_CONST.BOLD_WHITE_18,
               unselectedLabelStyle: FONT_CONST.MEDIUM_WHITE_18,
             ),
           ),
         ));
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void onSearchQueryChanged() {
+    _friendsBloc.add(SearchQueryChanged(keyword: _searchController.text));
   }
 }

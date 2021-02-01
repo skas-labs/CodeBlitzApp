@@ -8,7 +8,7 @@ part of 'profile_response.dart';
 
 ProfileResponse _$ProfileResponseFromJson(Map<String, dynamic> json) {
   return ProfileResponse(
-    id: json['id'] as String,
+    id: json['id'] as int,
     name: json['name'] as String,
   );
 }

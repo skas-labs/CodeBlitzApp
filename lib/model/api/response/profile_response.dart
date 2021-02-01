@@ -4,7 +4,7 @@ part 'profile_response.g.dart';
 
 @JsonSerializable()
 class ProfileResponse {
-  String id;
+  int id;
   String name;
 
   ProfileResponse(

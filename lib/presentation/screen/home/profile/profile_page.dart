@@ -6,24 +6,31 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ProfileScreen extends StatefulWidget {
+  final int index;
+
+  const ProfileScreen(this.index);
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
-            body: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  _buildContent(state),
-                ],
-              ),
+            body: Column(
+              children: <Widget>[
+                _buildContent(state),
+              ],
             ),
           ),
         );
@@ -40,9 +47,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           },
           child: ListView(
             shrinkWrap: true,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             children: <Widget>[
-              UserItem(
+              const UserItem(
                 username: 'codechamp',
                 displayName: 'Sid Jain',
                 avatarUrl: 'https://via.placeholder.com/140x100',
@@ -79,10 +86,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: UnicornButton(
                           radius: 10,
                           gradient: COLOR_CONST.GRADIENT_SECONDARY,
-                          child: Text('Junior Dev'.toUpperCase(),
-                              style: FONT_CONST.BOLD_WHITE_14),
                           onPressed: null,
-                          height: 30),
+                          height: 30,
+                          child: Text('Junior Dev'.toUpperCase(),
+                              style: FONT_CONST.BOLD_WHITE_14)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 26.0, right: 26.0),
@@ -96,10 +103,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: UnicornButton(
                           radius: 10,
                           gradient: COLOR_CONST.GRADIENT_SECONDARY,
-                          child: Text('Senior Dev'.toUpperCase(),
-                              style: FONT_CONST.BOLD_WHITE_14),
                           onPressed: null,
-                          height: 30),
+                          height: 30,
+                          child: Text('Senior Dev'.toUpperCase(),
+                              style: FONT_CONST.BOLD_WHITE_14)),
                     ),
                   ],
                 ),
@@ -128,7 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           style: FONT_CONST.EXTRABOLD_WHITE_22.copyWith(
                             foreground: Paint()
                               ..shader = COLOR_CONST.GRADIENT_BLUE.createShader(
-                                  (new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
+                                  (const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
                           ),
                           children: <TextSpan>[
                             TextSpan(
@@ -151,7 +158,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           style: FONT_CONST.EXTRABOLD_WHITE_22.copyWith(
                             foreground: Paint()
                               ..shader = COLOR_CONST.GRADIENT_BLUE.createShader(
-                                  (new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
+                                  (const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
                           ),
                           children: <TextSpan>[
                             TextSpan(
@@ -174,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           style: FONT_CONST.EXTRABOLD_WHITE_22.copyWith(
                             foreground: Paint()
                               ..shader = COLOR_CONST.GRADIENT_BLUE.createShader(
-                                  (new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
+                                  (const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
                           ),
                           children: <TextSpan>[
                             TextSpan(
@@ -196,15 +203,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ProgressWithText(
+                    const ProgressWithText(
                         progress: 0.45,
                         primaryText: "70%",
                         secondaryText: "WINS"),
-                    ProgressWithText(
+                    const ProgressWithText(
                         progress: 0.15,
                         primaryText: "10%",
                         secondaryText: "DRAWS"),
-                    ProgressWithText(
+                    const ProgressWithText(
                         progress: 0.20,
                         primaryText: "20%",
                         secondaryText: "LOSSES"),
@@ -217,19 +224,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       );
     } else if (state is ProfileLoading) {
-      return Expanded(
+      return const Expanded(
         child: Center(
           child: CircularProgressIndicator(),
         ),
       );
     } else if (state is ProfileNotLoaded) {
-      return Expanded(
+      return const Expanded(
         child: Center(
           child: Text('Cannot load data'),
         ),
       );
     } else {
-      return Expanded(
+      return const Expanded(
         child: Center(
           child: Text('Unknown state'),
         ),

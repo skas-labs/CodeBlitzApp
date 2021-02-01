@@ -16,7 +16,6 @@ class SignUpHomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              flex: 1,
               child: UnicornText(
                   text: "code\nblitz",
                   gradient: COLOR_CONST.GRADIENT_PRIMARY,
@@ -34,7 +33,6 @@ class SignUpHomeScreen extends StatelessWidget {
               style: FONT_CONST.MEDIUM_WHITE_22,
             ),
             Expanded(
-              flex: 1,
               child: Container(
                   margin: const EdgeInsets.only(top: 30, bottom: 30),
                   child: CustomDivider(hasMargin: true)),
@@ -48,11 +46,10 @@ class SignUpHomeScreen extends StatelessWidget {
               child: UnicornButton(
                   radius: 5,
                   gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                  child:
-                      Text('phone number', style: FONT_CONST.BOLD_WHITE_20),
                   onPressed: () {
                     Navigator.pushNamed(context, AppRouter.SIGNUP_PHONE);
-                  }),
+                  },
+                  child: Text('phone number', style: FONT_CONST.BOLD_WHITE_20)),
             ),
           ],
         ),
