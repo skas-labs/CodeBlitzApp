@@ -17,7 +17,7 @@ class _FriendsScreenState extends State<FriendsScreen>
   int currentTabIndex = 0;
 
   FriendsBloc _friendsBloc;
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -58,7 +58,6 @@ class _FriendsScreenState extends State<FriendsScreen>
     return Expanded(
       child: Column(
         children: <Widget>[
-          const SizedBox(height: 20),
           NeumorphicContainer(
             insets:
                 const EdgeInsets.only(right: 30, left: 30, top: 15, bottom: 20),

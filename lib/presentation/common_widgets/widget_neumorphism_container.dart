@@ -5,10 +5,12 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 class NeumorphicContainer extends StatelessWidget {
   final Widget _child;
   final EdgeInsets _insets;
+  final bool isFlat;
 
   const NeumorphicContainer({
     @required Widget child,
     EdgeInsets insets = const EdgeInsets.all(0),
+    this.isFlat = true,
   })  : _child = child,
         _insets = insets;
 
@@ -17,9 +19,8 @@ class NeumorphicContainer extends StatelessWidget {
     return Neumorphic(
         margin: _insets,
         style: NeumorphicStyle(
-          depth: -20,
+          depth: isFlat ? 3 : -4,
           color: COLOR_CONST.PRIMARY,
-          shape: NeumorphicShape.convex,
           lightSource: LightSource.topLeft,
           shadowDarkColor: COLOR_CONST.SHADOW_DARK,
           shadowLightColor: COLOR_CONST.SHADOW_LIGHT,

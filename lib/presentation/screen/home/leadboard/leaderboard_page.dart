@@ -38,7 +38,6 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
           child: Scaffold(
             body: Container(
               child: Column(
-                mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   _buildContent(state),
                 ],
@@ -58,7 +57,6 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
         },
         child: Column(
           children: <Widget>[
-            SizedBox(height: 20),
             _buildTabs(),
             CustomDivider(),
             _buildList(state)
@@ -68,27 +66,27 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
     );
   }
 
-  _buildList(ProfileState state) {
+  Widget _buildList(ProfileState state) {
     if (state is ProfileNotLoaded) {
-      return Expanded(
+      return const Expanded(
         child: Center(
           child: CircularProgressIndicator(),
         ),
       );
     } else if (state is ProfileLoading) {
-      return Expanded(
+      return const Expanded(
         child: Center(
           child: CircularProgressIndicator(),
         ),
       );
     } else if (state is ProfileNotLoaded) {
-      return Expanded(
+      return const Expanded(
         child: Center(
           child: Text('Cannot load data'),
         ),
       );
     } else {
-      return Expanded(
+      return const Expanded(
         child: Center(
           child: Text('Unknown state'),
         ),
@@ -96,7 +94,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
     }
   }
 
-  _buildTabs() {
+  DefaultTabController _buildTabs() {
     return DefaultTabController(
         length: 2,
         child: Padding(

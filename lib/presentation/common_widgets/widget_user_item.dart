@@ -7,6 +7,7 @@ class UserItem extends StatelessWidget {
   final String displayName;
   final String username;
   final double points;
+  final EdgeInsets insets;
 
   const UserItem({
     Key key,
@@ -14,15 +15,15 @@ class UserItem extends StatelessWidget {
     @required this.displayName,
     @required this.username,
     this.points,
+    this.insets = const EdgeInsets.all(30),
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       child: Padding(
-        padding: const EdgeInsets.all(30),
+        padding: insets,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(radius: 40, backgroundImage: NetworkImage(avatarUrl)),
             Padding(
@@ -42,11 +43,9 @@ class UserItem extends StatelessWidget {
                     "@$username • 700 CR",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: FONT_CONST.BOLD_WHITE_16.copyWith(
-                      color: COLOR_CONST.YELLOW
-                    ),
+                    style: FONT_CONST.BOLD_WHITE_16
+                        .copyWith(color: COLOR_CONST.YELLOW),
                     textAlign: TextAlign.center,
-
                   )
                 ],
               ),

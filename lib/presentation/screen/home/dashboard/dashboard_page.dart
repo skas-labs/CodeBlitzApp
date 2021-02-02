@@ -43,7 +43,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         shrinkWrap: true,
         physics: const BouncingScrollPhysics(),
         children: <Widget>[
-          const SizedBox(height: 50),
+          const SizedBox(height: 20),
           SizedBox(width: 120, height: 100, child: WidgetLogoCodeBlitz()),
           Container(
             alignment: Alignment.center,

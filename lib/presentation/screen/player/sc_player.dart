@@ -49,6 +49,7 @@ class PlayerScreen extends StatelessWidget {
           ),
           Row(children: [
             NeumorphicContainer(
+              isFlat: false,
               insets: const EdgeInsets.only(left: 30, bottom: 30),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(30, 14, 30, 14),
@@ -59,6 +60,7 @@ class PlayerScreen extends StatelessWidget {
             ),
             Expanded(
               child: NeumorphicContainer(
+                isFlat: false,
                 insets: const EdgeInsets.only(left: 20, right: 30, bottom: 30),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(30, 14, 30, 14),

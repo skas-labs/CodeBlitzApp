@@ -54,6 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 displayName: 'Sid Jain',
                 avatarUrl: 'https://via.placeholder.com/140x100',
                 points: 700,
+                insets: EdgeInsets.fromLTRB(30,0,30,30),
               ),
               CustomDivider(),
               Padding(
