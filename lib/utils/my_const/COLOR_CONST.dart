@@ -11,8 +11,8 @@ class COLOR_CONST {
   static final HexColor GREY = new HexColor("999999");
 
   static final HexColor EMBOSS_BLACK = new HexColor("0F0F20");
-  static final HexColor SHADOW_DARK = new HexColor("24242E");
-  static final HexColor SHADOW_LIGHT = new HexColor("03030A");
+  static final HexColor SHADOW_DARK = new HexColor("1E1E2D");
+  static final HexColor SHADOW_LIGHT = new HexColor("03030B");
 
 
 

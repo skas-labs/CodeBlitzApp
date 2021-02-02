@@ -17,15 +17,17 @@ class NeumorphicContainer extends StatelessWidget {
     return Neumorphic(
         margin: _insets,
         style: NeumorphicStyle(
-          depth: -5,
+          depth: -20,
           color: COLOR_CONST.PRIMARY,
           shape: NeumorphicShape.convex,
-          lightSource: LightSource.bottomRight,
+          lightSource: LightSource.topLeft,
+          shadowDarkColor: COLOR_CONST.SHADOW_DARK,
+          shadowLightColor: COLOR_CONST.SHADOW_LIGHT,
           shadowDarkColorEmboss: COLOR_CONST.SHADOW_DARK,
           shadowLightColorEmboss: COLOR_CONST.SHADOW_LIGHT,
-          intensity: 0.60,
+          intensity: 0.90,
           boxShape: NeumorphicBoxShape.roundRect(
-              const BorderRadius.all(Radius.circular(5))),
+              const BorderRadius.all(Radius.circular(10))),
         ),
         child: _child);
   }

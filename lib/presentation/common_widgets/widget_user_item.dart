@@ -24,7 +24,7 @@ class UserItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircleAvatar(radius: 35, backgroundImage: NetworkImage(avatarUrl)),
+            CircleAvatar(radius: 40, backgroundImage: NetworkImage(avatarUrl)),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Column(

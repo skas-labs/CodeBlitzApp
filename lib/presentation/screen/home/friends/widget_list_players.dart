@@ -71,6 +71,6 @@ class _WidgetItemPlayer extends StatelessWidget {
   }
 
   void openPlayerDetails(BuildContext context, int id) {
-    Navigator.pushNamed(context, AppRouter.HOME, arguments: id);
+    Navigator.pushNamed(context, AppRouter.PLAYER, arguments: id);
   }
 }
