@@ -17,7 +17,10 @@ class HomeRepository {
   }
 
   Future<List<ProfileResponse>> getPlayers({String keyword}) async {
-    log("keyword for the search $keyword");
     return client.getPlayers(username: keyword);
+  }
+
+  Future<ProfileResponse> getPlayer(int id) async {
+    return client.getPlayerById(id.toString());
   }
 }

@@ -130,12 +130,12 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<List<ProfileResponse>> getPlayerById(id) async {
+  Future<ProfileResponse> getPlayerById(id) async {
     ArgumentError.checkNotNull(id, 'id');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<List<dynamic>>('/api/players/$id',
+    final _result = await _dio.request<Map<String, dynamic>>('/api/players/$id',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -143,9 +143,7 @@ class _RestClient implements RestClient {
             extra: _extra,
             baseUrl: baseUrl),
         data: _data);
-    var value = _result.data
-        .map((dynamic i) => ProfileResponse.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = ProfileResponse.fromJson(_result.data);
     return value;
   }
 

@@ -27,7 +27,7 @@ abstract class RestClient {
   Future<List<ProfileResponse>> getPlayers({@Query("username") String username});
 
   @GET("/api/players/{id}")
-  Future<List<ProfileResponse>> getPlayerById(@Path("id") String id);
+  Future<ProfileResponse> getPlayerById(@Path("id") String id);
 
   @GET("/api/players/{id}/followers")
   Future<List<ProfileResponse>> getFollowersById(@Path("id") String id);
