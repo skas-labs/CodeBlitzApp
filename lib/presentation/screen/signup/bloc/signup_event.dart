@@ -37,7 +37,7 @@ class SendOtp extends SignUpEvent {
 }
 
 class VerifyOtp extends SignUpEvent {
-  final String body;
+  final Map body;
 
   const VerifyOtp({this.body});
 

@@ -11,7 +11,7 @@ abstract class SignUpState extends Equatable {
 class DefaultState extends SignUpState {}
 
 class OtpSent extends SignUpState {
-  final String response;
+  final Map response;
 
   const OtpSent(this.response);
 
@@ -27,7 +27,7 @@ class OtpSent extends SignUpState {
 }
 
 class OtpVerified extends SignUpState {
-  final String response;
+  final Map response;
 
   const OtpVerified(this.response);
 

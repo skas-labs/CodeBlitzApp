@@ -19,7 +19,7 @@ class AuthInterceptor extends InterceptorsWrapper {
   Future onRequest(RequestOptions options) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     options.headers["Authorization"] =
-        "Bearer ${prefs.getString('access_token')}";
+        "Bearer 105c840c-f4c8-4c6b-a8f8-f326d4012d63";
     return options;
   }
 }

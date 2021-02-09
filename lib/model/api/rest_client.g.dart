@@ -17,12 +17,12 @@ class _RestClient implements RestClient {
   String baseUrl;
 
   @override
-  Future<String> sendOtp(phoneno) async {
+  Future<HttpResponse<dynamic>> sendOtp(phoneno) async {
     ArgumentError.checkNotNull(phoneno, 'phoneno');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = phoneno;
-    final _result = await _dio.request<String>('/auth/otp',
+    final _result = await _dio.request('/auth/otp',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'POST',
@@ -31,16 +31,17 @@ class _RestClient implements RestClient {
             baseUrl: baseUrl),
         data: _data);
     final value = _result.data;
-    return value;
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<String> verifyOtp(body) async {
+  Future<HttpResponse<dynamic>> verifyOtp(body) async {
     ArgumentError.checkNotNull(body, 'body');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = body;
-    final _result = await _dio.request<String>('/auth/otp/verify',
+    final _result = await _dio.request('/auth/otp/verify',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'POST',
@@ -49,7 +50,8 @@ class _RestClient implements RestClient {
             baseUrl: baseUrl),
         data: _data);
     final value = _result.data;
-    return value;
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   @override
@@ -57,7 +59,7 @@ class _RestClient implements RestClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<Map<String, dynamic>>('/api/players/me',
+    final _result = await _dio.request<Map<String, dynamic>>('/players/me',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -75,7 +77,7 @@ class _RestClient implements RestClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<List<dynamic>>('/api/players/$id/follow',
+    final _result = await _dio.request<List<dynamic>>('/players/$id/follow',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -95,7 +97,7 @@ class _RestClient implements RestClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<List<dynamic>>('/api/players/$id/follow',
+    final _result = await _dio.request<List<dynamic>>('/players/$id/follow',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'DELETE',
@@ -115,7 +117,7 @@ class _RestClient implements RestClient {
     final queryParameters = <String, dynamic>{r'username': username};
     queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<List<dynamic>>('/api/players',
+    final _result = await _dio.request<List<dynamic>>('/players',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -153,8 +155,7 @@ class _RestClient implements RestClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<List<dynamic>>(
-        '/api/players/$id/followers',
+    final _result = await _dio.request<List<dynamic>>('/players/$id/followers',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -174,8 +175,7 @@ class _RestClient implements RestClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<List<dynamic>>(
-        '/api/players/$id/following',
+    final _result = await _dio.request<List<dynamic>>('/players/$id/following',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -187,5 +187,23 @@ class _RestClient implements RestClient {
         .map((dynamic i) => ProfileResponse.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
+  }
+
+  @override
+  Future<HttpResponse<dynamic>> createMatch() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.request('/matches',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = _result.data;
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return BlocListener<DashboardBloc, DashboardState>(
         listener: (context, state) {
+          if(state is MatchLoaded){
+            log("message ${state.response['matchId']}");
+          }
+
           final snackBar = SnackBar(
             content: const Text('Yay! A SnackBar!'),
             action: SnackBarAction(
@@ -79,7 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               gradient: COLOR_CONST.GRADIENT_PRIMARY,
               onPressed: () {
                 BlocProvider.of<DashboardBloc>(context)
-                    .add(JoinMatch(code: "hello"));
+                    .add(const JoinMatch(code: "hello"));
               },
               child: Text('join a war', style: FONT_CONST.BOLD_WHITE_20),
             ),

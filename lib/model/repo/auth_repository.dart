@@ -10,11 +10,11 @@ class AuthRepository {
     client = RestClient(dio);
   }
 
-  Future<String> sendOtp(String phoneno) async {
+  Future<HttpResponse> sendOtp(String phoneno) async {
     return client.sendOtp("{\"phno\": \"${phoneno}\" }");
   }
 
-  Future<String> verifyOtp(String body) async {
+  Future<HttpResponse> verifyOtp(String body) async {
     return client.verifyOtp(body);
   }
 }

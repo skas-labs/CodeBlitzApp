@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:code_blitz/model/api/response/profile_response.dart';
+import 'package:retrofit/dio.dart';
 
 abstract class DashboardState extends Equatable {
   const DashboardState();
@@ -13,7 +14,7 @@ class DefaultState extends DashboardState {}
 class MatchLoading extends DashboardState {}
 
 class MatchLoaded extends DashboardState {
-  final ProfileResponse response;
+  final Map response;
 
   const MatchLoaded(this.response);
 

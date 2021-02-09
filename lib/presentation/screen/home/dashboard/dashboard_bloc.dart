@@ -22,9 +22,9 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   Stream<DashboardState> _mapLoadDashboardToState([String code]) async* {
     try {
-      final response = await homeRepository.getProfileData();
+      final response = await homeRepository.createMatch();
 
-      yield MatchLoaded(response);
+      yield MatchLoaded(response.data as Map);
     } catch (e) {
       yield MatchNotLoaded(e.toString());
     }

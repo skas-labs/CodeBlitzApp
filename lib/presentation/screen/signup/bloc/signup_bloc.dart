@@ -22,16 +22,16 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   Stream<SignUpState> _mapSendOtpToState(String phone) async* {
     try {
       final response = await authRepository.sendOtp(phone);
-      yield OtpSent(response);
+      yield OtpSent(response as Map);
     } catch (e) {
       yield SignUpNotLoaded(e.toString());
     }
   }
 
-  Stream<SignUpState> _mapVerifyOtpToState(String body) async* {
+  Stream<SignUpState> _mapVerifyOtpToState(Map body) async* {
     try {
-      final response = await authRepository.verifyOtp(body);
-      await _saveAccessToken(response.substring(10,30));
+      final response = await authRepository.verifyOtp(body.toString()) as Map;
+      await _saveAccessToken(response['access_token'].toString());
       yield OtpVerified(response);
     } catch (e) {
       yield SignUpNotLoaded(e.toString());

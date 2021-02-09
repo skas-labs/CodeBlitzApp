@@ -9,29 +9,32 @@ abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
   @POST("/auth/otp")
-  Future<String> sendOtp(@Body() String phoneno);
+  Future<HttpResponse> sendOtp(@Body() String phoneno);
 
   @POST("/auth/otp/verify")
-  Future<String> verifyOtp(@Body() String body);
+  Future<HttpResponse> verifyOtp(@Body() String body);
 
-  @GET("/api/players/me")
+  @GET("/players/me")
   Future<ProfileResponse> getProfileData();
 
-  @GET("/api/players/{id}/follow")
+  @GET("/players/{id}/follow")
   Future<List<ProfileResponse>> followPlayer(@Path("id") String id);
 
-  @DELETE("/api/players/{id}/follow")
+  @DELETE("/players/{id}/follow")
   Future<List<ProfileResponse>> unfollowPlayer(@Path("id") String id);
 
-  @GET("/api/players")
+  @GET("/players")
   Future<List<ProfileResponse>> getPlayers({@Query("username") String username});
 
   @GET("/api/players/{id}")
   Future<ProfileResponse> getPlayerById(@Path("id") String id);
 
-  @GET("/api/players/{id}/followers")
+  @GET("/players/{id}/followers")
   Future<List<ProfileResponse>> getFollowersById(@Path("id") String id);
 
-  @GET("/api/players/{id}/following")
+  @GET("/players/{id}/following")
   Future<List<ProfileResponse>> getFollowingById(@Path("id") String id);
+
+  @POST("/matches")
+  Future<HttpResponse> createMatch();
 }

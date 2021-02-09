@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:code_blitz/model/api/dio_provider.dart';
 import 'package:code_blitz/model/api/response/profile_response.dart';
 import 'package:code_blitz/model/api/rest_client.dart';
+import 'package:retrofit/dio.dart';
 
 class HomeRepository {
   RestClient client;
@@ -18,6 +19,10 @@ class HomeRepository {
 
   Future<List<ProfileResponse>> getPlayers({String keyword}) async {
     return client.getPlayers(username: keyword);
+  }
+
+  Future<HttpResponse> createMatch() async {
+    return client.createMatch();
   }
 
   Future<ProfileResponse> getPlayer(int id) async {
