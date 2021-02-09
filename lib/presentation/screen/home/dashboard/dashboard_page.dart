@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
+import 'package:code_blitz/presentation/router.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,8 +16,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return BlocListener<DashboardBloc, DashboardState>(
         listener: (context, state) {
-          if(state is MatchLoaded){
-            log("message ${state.response['matchId']}");
+          if (state is MatchLoaded) {
+            Navigator.pushNamed(context, AppRouter.GAME,
+                arguments: state.response['matchId']);
           }
 
           final snackBar = SnackBar(

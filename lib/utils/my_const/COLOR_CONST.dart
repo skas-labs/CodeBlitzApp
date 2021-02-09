@@ -4,32 +4,34 @@ import 'package:flutter/material.dart';
 class COLOR_CONST {
   //https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4
 
-  static final HexColor PRIMARY = new HexColor("0F0F20");
-
-  static final HexColor WHITE = new HexColor("FFFFFF");
-  static final HexColor YELLOW = new HexColor("F5E555");
-  static final HexColor GREY = new HexColor("999999");
-
-  static final HexColor EMBOSS_BLACK = new HexColor("0F0F20");
-  static final HexColor SHADOW_DARK = new HexColor("1E1E2D");
-  static final HexColor SHADOW_LIGHT = new HexColor("03030B");
+  static final HexColor PRIMARY =  HexColor("0F0F20");
+  static final HexColor WHITE =  HexColor("FFFFFF");
+  static final HexColor YELLOW =  HexColor("F5E555");
+  static final HexColor GREY =  HexColor("999999");
+  static final HexColor GREY_DARK =  HexColor("666666");
+  static final HexColor BLUE = HexColor("2AB5ED");
 
 
+  static final HexColor EMBOSS_BLACK =  HexColor("0F0F20");
+  static final HexColor SHADOW_DARK =  HexColor("1E1E2D");
+  static final HexColor SHADOW_LIGHT =  HexColor("03030B");
 
-  static final HexColor DIVIDER = new HexColor("22223A");
+
+
+  static final HexColor DIVIDER =  HexColor("22223A");
 
   //Gradients
-  static final HexColor GRADIENT_PRIMARY_START = new HexColor("F8501C");
-  static final HexColor GRADIENT_PRIMARY_END = new HexColor("FFAB1D");
+  static final HexColor GRADIENT_PRIMARY_START =  HexColor("F8501C");
+  static final HexColor GRADIENT_PRIMARY_END =  HexColor("FFAB1D");
 
-  static final HexColor GRADIENT_SECONDARY_START = new HexColor("44CFF0");
-  static final HexColor GRADIENT_SECONDARY_END = new HexColor("3976ED");
+  static final HexColor GRADIENT_SECONDARY_START =  HexColor("44CFF0");
+  static final HexColor GRADIENT_SECONDARY_END =  HexColor("3976ED");
 
-  static final HexColor GRADIENT_RED_START = new HexColor("DF28A9");
-  static final HexColor GRADIENT_RED_END = new HexColor("FC6159");
+  static final HexColor GRADIENT_RED_START =  HexColor("DF28A9");
+  static final HexColor GRADIENT_RED_END =  HexColor("FC6159");
 
-  static final HexColor GRADIENT_BLUE_START = new HexColor("09FFC4");
-  static final HexColor GRADIENT_BLUE_END = new HexColor("0B88FB");
+  static final HexColor GRADIENT_BLUE_START =  HexColor("09FFC4");
+  static final HexColor GRADIENT_BLUE_END =  HexColor("0B88FB");
 
   static final LinearGradient GRADIENT_PRIMARY = LinearGradient(
     begin: Alignment.topLeft,

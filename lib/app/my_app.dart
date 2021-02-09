@@ -42,9 +42,7 @@ class MyApp extends StatelessWidget {
             return HomeScreen();
           }
 
-          return Container(
-            child: Center(child: Text('Unhandle State $state')),
-          );
+          return Center(child: Text('Unhandle State $state'));
         },
       ),
     );

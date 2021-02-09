@@ -61,6 +61,7 @@ class FONT_CONST {
   static final BOLD_WHITE_18 = BOLD_WHITE.copyWith(fontSize: 18);
   static final BOLD_WHITE_20 = BOLD_WHITE.copyWith(fontSize: 20);
   static final BOLD_WHITE_24 = BOLD_WHITE.copyWith(fontSize: 24);
+  static final BOLD_WHITE_54 = BOLD_WHITE.copyWith(fontSize: 54);
 
 
   //BOLD

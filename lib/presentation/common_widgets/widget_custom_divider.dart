@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 
 class CustomDivider extends StatelessWidget {
   final bool _hasMargin;
+  final double height;
 
-  CustomDivider({bool hasMargin = false}) : this._hasMargin = hasMargin;
+  CustomDivider({bool hasMargin = false, this.height = 2}) : this._hasMargin = hasMargin;
 
   @override
   Widget build(BuildContext context) {
     double indent = _hasMargin? 0 : 30;
     return Divider(
-      color: COLOR_CONST.DIVIDER,
-      height: 1,
-      thickness: 2,
+      color: Colors.transparent,
+      height: height,
       indent: indent,
       endIndent: indent,
     );

@@ -1,3 +1,4 @@
+import 'package:code_blitz/presentation/screen/game/sc_game.dart';
 import 'package:code_blitz/presentation/screen/player/sc_player.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class AppRouter {
   static const String SIGNUP_PHONE = '/signup_phone';
   static const String SIGNUP_OTP = '/signup_otp';
   static const String PLAYER = '/player';
+  static const String GAME = '/game';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -34,6 +36,9 @@ class AppRouter {
       case PLAYER:
         final id = settings.arguments as int;
         return _createRoute(PlayerScreen(id: id));
+      case GAME:
+        final matchId = settings.arguments as String;
+        return _createRoute(GameScreen(id: matchId));
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
