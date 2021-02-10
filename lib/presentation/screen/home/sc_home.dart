@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {},
                     ),
                   ),
-                  Text(heading[index], style: FONT_CONST.BOLD_WHITE_20),
+                  Text(heading[index], style: MyFonts.bold_20),
                   NeumorphicContainer(
                     child: IconButton(
                       icon: Image.asset(
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    gradient: COLOR_CONST.GRADIENT_PRIMARY),
+                    gradient: MyColors.GRADIENT_PRIMARY),
                 child: MySvgImage(
                   path: 'assets/thunderbolt.svg',
                   height: 30,

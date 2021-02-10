@@ -23,7 +23,7 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          color: COLOR_CONST.PRIMARY,
+          color: MyColors.PRIMARY,
           child: const Center(
             child: Waiting(),
           )),
@@ -52,8 +52,8 @@ class Waiting extends StatelessWidget {
             ),
             UnicornText(
               text: "Sid Jain",
-              style: FONT_CONST.EXTRABOLD_WHITE_20,
-              gradient: COLOR_CONST.GRADIENT_PRIMARY,
+              style: MyFonts.extraBold_20,
+              gradient: MyColors.GRADIENT_PRIMARY,
               overflow: TextOverflow.ellipsis,
               align: TextAlign.center,
               maxLines: 1,
@@ -63,7 +63,7 @@ class Waiting extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style:
-                  FONT_CONST.MEDIUM_WHITE_16.copyWith(color: COLOR_CONST.WHITE),
+                  MyFonts.medium_16.copyWith(color: MyColors.WHITE),
               textAlign: TextAlign.center,
             ),
             Padding(
@@ -73,11 +73,11 @@ class Waiting extends StatelessWidget {
                 height: 50,
                 child: UnicornButton(
                     radius: 10,
-                    gradient: COLOR_CONST.GRADIENT_SECONDARY,
+                    gradient: MyColors.GRADIENT_SECONDARY,
                     onPressed: null,
                     height: 30,
                     child: Text('Junior Dev'.toUpperCase(),
-                        style: FONT_CONST.BOLD_WHITE_16)),
+                        style: MyFonts.bold_16)),
               ),
             ),
           ],
@@ -93,8 +93,8 @@ class Waiting extends StatelessWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: UnicornText(
                     text: 'code\nblitz.',
-                    style: FONT_CONST.BOLD_WHITE_54.copyWith(height: 0.8),
-                    gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                    style: MyFonts.bold_54.copyWith(height: 0.8),
+                    gradient: MyColors.GRADIENT_PRIMARY,
                   ),
                 )),
           ],
@@ -110,8 +110,8 @@ class Waiting extends StatelessWidget {
             ),
             UnicornText(
               text: "Sid Jain",
-              style: FONT_CONST.EXTRABOLD_WHITE_20,
-              gradient: COLOR_CONST.GRADIENT_PRIMARY,
+              style: MyFonts.extraBold_20,
+              gradient: MyColors.GRADIENT_PRIMARY,
               overflow: TextOverflow.ellipsis,
               align: TextAlign.center,
               maxLines: 1,
@@ -121,7 +121,7 @@ class Waiting extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style:
-                  FONT_CONST.MEDIUM_WHITE_16.copyWith(color: COLOR_CONST.WHITE),
+                  MyFonts.medium_16.copyWith(color: MyColors.WHITE),
               textAlign: TextAlign.center,
             ),
             Padding(
@@ -131,11 +131,11 @@ class Waiting extends StatelessWidget {
                 height: 50,
                 child: UnicornButton(
                     radius: 10,
-                    gradient: COLOR_CONST.GRADIENT_SECONDARY,
+                    gradient: MyColors.GRADIENT_SECONDARY,
                     onPressed: null,
                     height: 30,
                     child: Text('Junior Dev'.toUpperCase(),
-                        style: FONT_CONST.BOLD_WHITE_16)),
+                        style: MyFonts.bold_16)),
               ),
             ),
           ],
@@ -160,14 +160,14 @@ class Game extends StatelessWidget {
           animationDuration: 2500,
           percent: 0.8,
           linearStrokeCap: LinearStrokeCap.roundAll,
-          linearGradient: COLOR_CONST.GRADIENT_SECONDARY,
+          linearGradient: MyColors.GRADIENT_SECONDARY,
         ),
         Padding(
           padding: const EdgeInsets.only(top: 12.0),
           child: Text(
             "time left: 08",
             textAlign: TextAlign.center,
-            style: FONT_CONST.BOLD_WHITE_14.copyWith(color: COLOR_CONST.BLUE),
+            style: MyFonts.bold_14.copyWith(color: MyColors.BLUE),
             maxLines: 1,
           ),
         ),
@@ -184,7 +184,7 @@ class Game extends StatelessWidget {
                     radius: 80.0,
                     animationDuration: 2500,
                     percent: 0.4,
-                    linearGradient: COLOR_CONST.GRADIENT_RED,
+                    linearGradient: MyColors.GRADIENT_RED,
                     center: const CircleAvatar(
                         radius: 36,
                         backgroundImage: NetworkImage(
@@ -194,8 +194,8 @@ class Game extends StatelessWidget {
                     "@codechamp",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: FONT_CONST.BOLD_WHITE_16
-                        .copyWith(color: COLOR_CONST.WHITE),
+                    style: MyFonts.bold_16
+                        .copyWith(color: MyColors.WHITE),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -207,7 +207,7 @@ class Game extends StatelessWidget {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      gradient: COLOR_CONST.GRADIENT_RED),
+                      gradient: MyColors.GRADIENT_RED),
                   child: MySvgImage(
                     path: 'assets/thunderbolt.svg',
                     height: 20,
@@ -221,7 +221,7 @@ class Game extends StatelessWidget {
                     radius: 80.0,
                     animationDuration: 2500,
                     percent: 0.4,
-                    linearGradient: COLOR_CONST.GRADIENT_RED,
+                    linearGradient: MyColors.GRADIENT_RED,
                     center: const CircleAvatar(
                         radius: 36,
                         backgroundImage: NetworkImage(
@@ -231,8 +231,8 @@ class Game extends StatelessWidget {
                     "@codechamp",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: FONT_CONST.BOLD_WHITE_16
-                        .copyWith(color: COLOR_CONST.WHITE),
+                    style: MyFonts.bold_16
+                        .copyWith(color: MyColors.WHITE),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -246,7 +246,7 @@ class Game extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(30, 80, 30, 30),
           child: Text(
             "Which tag is used to define an internal style sheet?",
-            style: FONT_CONST.BOLD_WHITE_20.copyWith(color: COLOR_CONST.WHITE),
+            style: MyFonts.bold_20.copyWith(color: MyColors.WHITE),
             textAlign: TextAlign.center,
           ),
         ),
@@ -262,42 +262,42 @@ class Game extends StatelessWidget {
               FlatButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(9.0),
-                      side: BorderSide(color: COLOR_CONST.GREY_DARK)),
+                      side: BorderSide(color: MyColors.GREY_DARK)),
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: FONT_CONST.BOLD_WHITE_20
-                        .copyWith(color: COLOR_CONST.GREY_DARK),
+                    style: MyFonts.bold_20
+                        .copyWith(color: MyColors.GREY_DARK),
                   )),
               FlatButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(9.0),
-                      side: BorderSide(color: COLOR_CONST.GREY_DARK)),
+                      side: BorderSide(color: MyColors.GREY_DARK)),
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: FONT_CONST.BOLD_WHITE_20
-                        .copyWith(color: COLOR_CONST.GREY_DARK),
+                    style: MyFonts.bold_20
+                        .copyWith(color: MyColors.GREY_DARK),
                   )),
               FlatButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(9.0),
-                      side: BorderSide(color: COLOR_CONST.GREY_DARK)),
+                      side: BorderSide(color: MyColors.GREY_DARK)),
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: FONT_CONST.BOLD_WHITE_20
-                        .copyWith(color: COLOR_CONST.GREY_DARK),
+                    style: MyFonts.bold_20
+                        .copyWith(color: MyColors.GREY_DARK),
                   )),
               FlatButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(9.0),
-                      side: BorderSide(color: COLOR_CONST.GREY_DARK)),
+                      side: BorderSide(color: MyColors.GREY_DARK)),
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: FONT_CONST.BOLD_WHITE_20
-                        .copyWith(color: COLOR_CONST.GREY_DARK),
+                    style: MyFonts.bold_20
+                        .copyWith(color: MyColors.GREY_DARK),
                   )),
 
             ],

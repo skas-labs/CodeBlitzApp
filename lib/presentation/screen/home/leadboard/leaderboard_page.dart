@@ -113,9 +113,9 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                 ),
               ],
               onTap: (index) {},
-              labelColor: COLOR_CONST.WHITE,
-              labelStyle: FONT_CONST.BOLD_WHITE_18,
-              unselectedLabelStyle: FONT_CONST.MEDIUM_WHITE_18,
+              labelColor: MyColors.WHITE,
+              labelStyle: MyFonts.bold_18,
+              unselectedLabelStyle: MyFonts.medium_18,
             ),
           ),
         ));

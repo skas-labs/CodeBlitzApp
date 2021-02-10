@@ -33,8 +33,8 @@ class UserItem extends StatelessWidget {
                 children: [
                   UnicornText(
                     text: displayName,
-                    style: FONT_CONST.EXTRABOLD_WHITE_20,
-                    gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                    style: MyFonts.extraBold_20,
+                    gradient: MyColors.GRADIENT_PRIMARY,
                     overflow: TextOverflow.ellipsis,
                     align: TextAlign.center,
                     maxLines: 1,
@@ -43,8 +43,8 @@ class UserItem extends StatelessWidget {
                     "@$username • 700 CR",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: FONT_CONST.BOLD_WHITE_16
-                        .copyWith(color: COLOR_CONST.YELLOW),
+                    style: MyFonts.bold_16
+                        .copyWith(color: MyColors.YELLOW),
                     textAlign: TextAlign.center,
                   )
                 ],

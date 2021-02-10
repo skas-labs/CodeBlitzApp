@@ -22,19 +22,19 @@ class ProgressWithText extends StatelessWidget {
           animationDuration: 2500,
           percent: 0.8,
           linearStrokeCap: LinearStrokeCap.roundAll,
-          linearGradient: COLOR_CONST.GRADIENT_RED,
+          linearGradient: MyColors.GRADIENT_RED,
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 10, 0, 30),
           child: RichText(
             text: TextSpan(
                 text: primaryText,
-                style: FONT_CONST.BOLD_WHITE_14
+                style: MyFonts.bold_14
                     ,
                 children: <TextSpan>[
                   TextSpan(
                     text: "\n$secondaryText",
-                      style: FONT_CONST.REGULAR_WHITE_14
+                      style: MyFonts.regular_14
 
                   ),
                 ]),

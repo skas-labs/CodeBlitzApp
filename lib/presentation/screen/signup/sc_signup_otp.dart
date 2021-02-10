@@ -48,23 +48,23 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
                     margin: const EdgeInsets.only(top: 30, bottom: 10),
                     child: Text(
                       "enter the 4 digit code",
-                      style: FONT_CONST.BOLD_WHITE_20,
+                      style: MyFonts.bold_20,
                     ),
                   ),
                   Text(
                     "we sent an sms with a 4-digit code to ${response['phno']}",
-                    style: FONT_CONST.REGULAR_WHITE_16
-                        .copyWith(color: COLOR_CONST.GREY),
+                    style: MyFonts.regular_16
+                        .copyWith(color: MyColors.GREY),
                   ),
                   const Spacer(),
                   UnicornButton(
                     radius: 5,
-                    gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                    gradient: MyColors.GRADIENT_PRIMARY,
                     onPressed: () {
                       response.addAll({"otp": "0000"});
                       _signupBloc.add(VerifyOtp(body: response));
                     },
-                    child: Text('verify now', style: FONT_CONST.BOLD_WHITE_20),
+                    child: Text('verify now', style: MyFonts.bold_20),
                   )
                 ],
               )),

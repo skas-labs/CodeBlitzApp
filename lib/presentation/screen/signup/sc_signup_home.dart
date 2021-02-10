@@ -18,19 +18,19 @@ class SignUpHomeScreen extends StatelessWidget {
             Expanded(
               child: UnicornText(
                   text: "code\nblitz",
-                  gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                  style: FONT_CONST.REGULAR_WHITE_48.copyWith(height: 0.8)),
+                  gradient: MyColors.GRADIENT_PRIMARY,
+                  style: MyFonts.regular_48.copyWith(height: 0.8)),
             ),
             Container(
               margin: const EdgeInsets.only(top: 30, bottom: 10),
               child: Text(
                 "welcome",
-                style: FONT_CONST.BOLD_WHITE_24,
+                style: MyFonts.bold_24,
               ),
             ),
             Text(
               "win code wars to become the ultimate champion!!",
-              style: FONT_CONST.MEDIUM_WHITE_22,
+              style: MyFonts.medium_22,
             ),
             Expanded(
               child: Container(
@@ -39,17 +39,17 @@ class SignUpHomeScreen extends StatelessWidget {
             ),
             Text(
               "continue with",
-              style: FONT_CONST.MEDIUM_WHITE_16,
+              style: MyFonts.medium_16,
             ),
             Container(
               margin: const EdgeInsets.only(top: 20, bottom: 20),
               child: UnicornButton(
                   radius: 5,
-                  gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                  gradient: MyColors.GRADIENT_PRIMARY,
                   onPressed: () {
                     Navigator.pushNamed(context, AppRouter.SIGNUP_PHONE);
                   },
-                  child: Text('phone number', style: FONT_CONST.BOLD_WHITE_20)),
+                  child: Text('phone number', style: MyFonts.bold_20)),
             ),
           ],
         ),

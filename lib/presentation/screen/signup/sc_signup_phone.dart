@@ -44,16 +44,17 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                 margin: const EdgeInsets.only(top: 30, bottom: 10),
                 child: Text(
                   "enter phone number",
-                  style: FONT_CONST.BOLD_WHITE_20,
+                  style: MyFonts.bold_20,
                 ),
               ),
               Text(
                 "win code wars to become the ultimate champion!!",
-                style: FONT_CONST.REGULAR_WHITE_16
-                    .copyWith(color: COLOR_CONST.GREY),
+                style: MyFonts.regular_16
+                    .copyWith(color: MyColors.GREY),
               ),
               NeumorphicContainer(
                 insets: const EdgeInsets.only(top: 44),
+                isFlat: false,
                 child: Padding(
                   padding: const EdgeInsets.only(
                       left: 8.0, top: 8.0, bottom: 8.0, right: 15.0),
@@ -61,7 +62,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                     children: [
                       CountryCodePicker(
                         flagWidth: 17,
-                        textStyle: FONT_CONST.BOLD_WHITE_16,
+                        textStyle: MyFonts.bold_16,
                         onChanged: _onCountryChange,
                         initialSelection: 'IN',
                       ),
@@ -74,7 +75,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                             border: InputBorder.none,
                             hintText: '',
                           ),
-                          style: FONT_CONST.BOLD_WHITE_16,
+                          style: MyFonts.bold_16,
                         ),
                       ),
                     ],
@@ -84,11 +85,11 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
               const Spacer(),
               UnicornButton(
                 radius: 5,
-                gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                gradient: MyColors.GRADIENT_PRIMARY,
                 onPressed: () {
                   _signupBloc.add(SendOtp(phone: number));
                 },
-                child: Text('continue', style: FONT_CONST.BOLD_WHITE_20),
+                child: Text('continue', style: MyFonts.bold_20),
               )
             ],
           )),

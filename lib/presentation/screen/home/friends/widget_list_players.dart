@@ -48,8 +48,8 @@ class _WidgetItemPlayer extends StatelessWidget {
                 children: [
                   UnicornText(
                     text: item.name,
-                    style: FONT_CONST.EXTRABOLD_WHITE_20,
-                    gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                    style: MyFonts.extraBold_20,
+                    gradient: MyColors.GRADIENT_PRIMARY,
                     overflow: TextOverflow.ellipsis,
                     align: TextAlign.center,
                     maxLines: 1,
@@ -58,7 +58,7 @@ class _WidgetItemPlayer extends StatelessWidget {
                     "@${item.username} • 700 CR",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: FONT_CONST.BOLD_WHITE_16,
+                    style: MyFonts.bold_16,
                     textAlign: TextAlign.center,
                   )
                 ],

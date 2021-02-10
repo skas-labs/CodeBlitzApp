@@ -33,7 +33,7 @@ class _TabBarMaterialWidgetState extends State<TabBarMaterialWidget> {
         ],
       ),
       child: BottomAppBar(
-        color: COLOR_CONST.PRIMARY,
+        color: MyColors.PRIMARY,
         shape: CircularNotchedRectangle(),
         notchMargin: 8,
         child: Row(
@@ -84,7 +84,7 @@ class _TabBarMaterialWidgetState extends State<TabBarMaterialWidget> {
                 height: 3,
                 child: Container(
                     decoration: BoxDecoration(
-                        gradient: COLOR_CONST.GRADIENT_PRIMARY)))
+                        gradient: MyColors.GRADIENT_PRIMARY)))
             : SizedBox(),
       ]),
     ]);

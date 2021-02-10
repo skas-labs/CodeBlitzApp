@@ -30,10 +30,9 @@ dependencies:
   cupertino_icons: ^1.0.0
   retrofit: any
   json_annotation: any
-  carousel_slider: ^2.3.1
 
   # UI
-  flutter_neumorphic: ^3.0.3
+  flutter_neumorphic: ^3.0.4+1
   country_code_picker: ^1.7.0
 
 

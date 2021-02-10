@@ -1,16 +1,10 @@
-# code_blitz
+# CodeBlitz : Fight a war 👨🏻‍💻⚔️👩🏻‍💻
 
-A new Flutter application.
+This is a Flutter App architected according to the BLoC Pattern.
+This app demonstrate the most Efficient way to Architect your Flutter Code on BLoC.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+# Things implemented in this App
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# How to get this Repo and run it on your System

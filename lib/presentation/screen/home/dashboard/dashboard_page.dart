@@ -57,7 +57,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               top: 40,
               bottom: 20,
             ),
-            child: Text("fight a war", style: FONT_CONST.REGULAR_WHITE_20),
+            child: Text("fight a war", style: MyFonts.regular_20),
           ),
           NeumorphicContainer(
             insets:
@@ -70,11 +70,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'enter war code',
-                  hintStyle: FONT_CONST.MEDIUM_WHITE_18,
+                  hintStyle: MyFonts.medium_18,
                   suffixIcon:
-                      Icon(Icons.content_copy, color: COLOR_CONST.WHITE),
+                      Icon(Icons.content_copy, color: MyColors.WHITE),
                 ),
-                style: FONT_CONST.BOLD_WHITE_18,
+                style: MyFonts.bold_18,
               ),
             ),
           ),
@@ -82,32 +82,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
             margin: const EdgeInsets.only(right: 105, left: 105, top: 15),
             child: UnicornButton(
               radius: 10,
-              gradient: COLOR_CONST.GRADIENT_PRIMARY,
+              gradient: MyColors.GRADIENT_PRIMARY,
               onPressed: () {
                 BlocProvider.of<DashboardBloc>(context)
                     .add(const JoinMatch(code: "hello"));
               },
-              child: Text('join a war', style: FONT_CONST.BOLD_WHITE_20),
+              child: Text('join a war', style: MyFonts.bold_20),
             ),
           ),
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.only(top: 30, bottom: 30),
-            child: Text("or", style: FONT_CONST.REGULAR_WHITE_20),
+            child: Text("or", style: MyFonts.regular_20),
           ),
           Container(
             margin: const EdgeInsets.only(right: 105, left: 105, bottom: 40),
             child: UnicornOutlineButton(
                 strokeWidth: 1,
                 radius: 10,
-                gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                gradient: MyColors.GRADIENT_PRIMARY,
                 onPressed: () {
                   BlocProvider.of<DashboardBloc>(context).add(CreateMatch());
                 },
                 child: UnicornText(
                   text: 'create a war',
-                  style: FONT_CONST.BOLD_WHITE_20,
-                  gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                  style: MyFonts.bold_20,
+                  gradient: MyColors.GRADIENT_PRIMARY,
                 )),
           ),
         ],

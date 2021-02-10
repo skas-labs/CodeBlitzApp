@@ -31,7 +31,7 @@ class UnicornText extends StatelessWidget {
         style: _style.copyWith(
           foreground: Paint()
             ..shader = _gradient
-                .createShader((new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
+                .createShader((const Rect.fromLTWH(20.0,0.0, 300.0, 0))),
         ));
   }
 }

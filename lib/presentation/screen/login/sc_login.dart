@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          color: COLOR_CONST.PRIMARY,
+          color: MyColors.PRIMARY,
           child: Padding(
             padding: const EdgeInsets.all(30),
             child: Column(
@@ -38,28 +38,30 @@ class _LoginScreenState extends State<LoginScreen> {
                 UnicornOutlineButton(
                     strokeWidth: 1,
                     radius: 5,
-                    gradient: COLOR_CONST.GRADIENT_PRIMARY,
+                    gradient: MyColors.text,
+                    onPressed: () => {openHome(context)},
                     child: UnicornText(
                       text: 'continue as guest',
-                      style: FONT_CONST.BOLD_WHITE_20,
-                      gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                    ),
-                    onPressed: openSignUp),
+                      style: MyFonts.bold_20,
+                      gradient: MyColors.text,
+                    )),
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: UnicornButton(
-                      radius: 5,
-                      gradient: COLOR_CONST.GRADIENT_PRIMARY,
-                      child: Text('login now', style: FONT_CONST.BOLD_WHITE_20),
-                      onPressed: () => {
-                            BlocProvider.of<AuthenticationBloc>(context)
-                                .add(LoggedIn()),
-                          }),
+                    radius: 5,
+                    gradient: MyColors.GRADIENT_PRIMARY,
+                    onPressed: openSignUp,
+                    child: Text('login now', style: MyFonts.bold_20),
+                  ),
                 )
               ],
             ),
           )),
     );
+  }
+
+  void openHome(BuildContext context) {
+    BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
   }
 
   void openSignUp() {

@@ -70,13 +70,13 @@ class _FriendsScreenState extends State<FriendsScreen>
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'search usernames, names',
-                  hintStyle: FONT_CONST.MEDIUM_WHITE_16,
+                  hintStyle: MyFonts.medium_16,
                   prefixIcon: Icon(
                     Icons.search,
-                    color: COLOR_CONST.WHITE,
+                    color: MyColors.WHITE,
                   ),
                 ),
-                style: FONT_CONST.BOLD_WHITE_16,
+                style: MyFonts.bold_16,
               ),
             ),
           ),
@@ -135,12 +135,12 @@ class _FriendsScreenState extends State<FriendsScreen>
                   _searchController.text = "";
                   _friendsBloc.add(TabChanged(index: index));
                 },
-                labelColor: COLOR_CONST.WHITE,
-                labelStyle: FONT_CONST.BOLD_WHITE_18,
-                unselectedLabelStyle: FONT_CONST.MEDIUM_WHITE_18,
+                labelColor: MyColors.WHITE,
+                labelStyle: MyFonts.bold_18,
+                unselectedLabelStyle: MyFonts.medium_18,
                 indicatorSize: TabBarIndicatorSize.label,
                 indicator: RoundedRectIndicator(
-                    color: COLOR_CONST.WHITE,
+                    color: MyColors.WHITE,
                     radius: 10,
                     padding: 0,
                     weight: 2.0)),

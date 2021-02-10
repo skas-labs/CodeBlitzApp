@@ -14,7 +14,7 @@ class NeumorphicBackButton extends StatelessWidget {
       child: IconButton(
         icon: Icon(
           Icons.arrow_back_ios_outlined,
-          color: COLOR_CONST.WHITE,
+          color: MyColors.WHITE,
         ),
         onPressed: () {
           Navigator.pop(context);

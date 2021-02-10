@@ -22,12 +22,12 @@ class NeumorphicCustomButton extends StatelessWidget {
       margin: _insets,
       style: NeumorphicStyle(
         depth: -4,
-        color: COLOR_CONST.PRIMARY,
+        color: MyColors.PRIMARY,
         lightSource: LightSource.topLeft,
-        shadowDarkColor: COLOR_CONST.SHADOW_DARK,
-        shadowLightColor: COLOR_CONST.SHADOW_LIGHT,
-        shadowDarkColorEmboss: COLOR_CONST.SHADOW_DARK,
-        shadowLightColorEmboss: COLOR_CONST.SHADOW_LIGHT,
+        shadowDarkColor: MyColors.SHADOW_DARK,
+        shadowLightColor: MyColors.SHADOW_LIGHT,
+        shadowDarkColorEmboss: MyColors.SHADOW_DARK,
+        shadowLightColorEmboss: MyColors.SHADOW_LIGHT,
         intensity: 0.90,
         boxShape: NeumorphicBoxShape.roundRect(
             const BorderRadius.all(Radius.circular(10))),
@@ -79,6 +79,6 @@ class NeumorphicCustomButton extends StatelessWidget {
 // ("follow
 // "
 // ,
-// textAlign: TextAlign.center,style: FONT_CONST.BOLD_WHITE_18),
+// textAlign: TextAlign.center,style: FONT_CONST.bold_18),
 // )
 // ,
