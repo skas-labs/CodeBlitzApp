@@ -30,6 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.0
   retrofit: any
   json_annotation: any
+  socket_io_client: ^2.0.0-beta.2
+
 
   # UI
   flutter_neumorphic: ^3.0.4+1

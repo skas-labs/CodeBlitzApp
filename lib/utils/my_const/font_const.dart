@@ -1,31 +1,22 @@
+import 'package:code_blitz/utils/my_const/COLOR_CONST.dart';
 import 'package:flutter/material.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class MyFonts {
-  static const regular = TextStyle(
-    fontFamily: 'Gilroy',
-    fontWeight: FontWeight.w400,
-  );
+  static final regular = TextStyle(
+      fontFamily: 'Gilroy', fontWeight: FontWeight.w400, color: MyColors.WHITE);
 
-  static const medium = TextStyle(
-    fontFamily: 'Gilroy',
-    fontWeight: FontWeight.w500,
-  );
+  static final medium = TextStyle(
+      fontFamily: 'Gilroy', fontWeight: FontWeight.w500, color: MyColors.WHITE);
 
-  static const semiBold = TextStyle(
-    fontFamily: 'Gilroy',
-    fontWeight: FontWeight.w600,
-  );
+  static final semiBold = TextStyle(
+      fontFamily: 'Gilroy', fontWeight: FontWeight.w600, color: MyColors.WHITE);
 
-  static const bold = TextStyle(
-    fontFamily: 'Gilroy',
-    fontWeight: FontWeight.w700,
-  );
+  static final bold = TextStyle(
+      fontFamily: 'Gilroy', fontWeight: FontWeight.w700, color: MyColors.WHITE);
 
-  static const extraBold = TextStyle(
-    fontFamily: 'Gilroy',
-    fontWeight: FontWeight.w800,
-  );
+  static final extraBold = TextStyle(
+      fontFamily: 'Gilroy', fontWeight: FontWeight.w800, color: MyColors.WHITE);
 
   //REGULAR
   static final regular_8 = regular.copyWith(fontSize: 8);
@@ -58,12 +49,10 @@ class MyFonts {
   static final bold_24 = bold.copyWith(fontSize: 24);
   static final bold_54 = bold.copyWith(fontSize: 54);
 
-
   //EXTRABOLD
   static final extraBold_12 = extraBold.copyWith(fontSize: 12);
   static final extraBold_14 = extraBold.copyWith(fontSize: 14);
   static final extraBold_16 = extraBold.copyWith(fontSize: 16);
   static final extraBold_20 = extraBold.copyWith(fontSize: 20);
   static final extraBold_22 = extraBold.copyWith(fontSize: 26);
-
 }

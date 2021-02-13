@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:code_blitz/presentation/custom_ui/custom_ui.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class GameScreen extends StatefulWidget {
   String id;
@@ -62,8 +65,7 @@ class Waiting extends StatelessWidget {
               "@codechamp • 700 CR",
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style:
-                  MyFonts.medium_16.copyWith(color: MyColors.WHITE),
+              style: MyFonts.medium_16.copyWith(color: MyColors.WHITE),
               textAlign: TextAlign.center,
             ),
             Padding(
@@ -74,7 +76,7 @@ class Waiting extends StatelessWidget {
                 child: UnicornButton(
                     radius: 10,
                     gradient: MyColors.GRADIENT_SECONDARY,
-                    onPressed: null,
+                    onPressed: makeConnection,
                     height: 30,
                     child: Text('Junior Dev'.toUpperCase(),
                         style: MyFonts.bold_16)),
@@ -120,8 +122,7 @@ class Waiting extends StatelessWidget {
               "@codechamp • 700 CR",
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style:
-                  MyFonts.medium_16.copyWith(color: MyColors.WHITE),
+              style: MyFonts.medium_16.copyWith(color: MyColors.WHITE),
               textAlign: TextAlign.center,
             ),
             Padding(
@@ -142,6 +143,26 @@ class Waiting extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void makeConnection() {
+    log('connect: this is checking log');
+
+    final IO.Socket socket = IO.io(
+        'https://game.stage.codeblitz.app/', <String, dynamic>{'port': '443', 'path': '/game'});
+    socket.onConnect((data) {
+      log('connect: ${data}');
+      log('connect: ${socket.id}');
+      // socket.on('event', (ddata) => log(data.toString()));
+      // socket.on('player_joined', (data) => log(data.toString()));
+      // socket.on('question_result', (data) => log(data.toString()));
+      // socket.on('round_start', (data) => log(data.toString()));
+      // socket.on('game_ended', (data) => log(data.toString()));
+      // socket.on('game_error', (data) => log(data.toString()));
+    });
+
+    socket.on('init', (data) => log(data.toString()));
+    socket.emit('join', "xyz");
   }
 }
 
@@ -194,8 +215,7 @@ class Game extends StatelessWidget {
                     "@codechamp",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: MyFonts.bold_16
-                        .copyWith(color: MyColors.WHITE),
+                    style: MyFonts.bold_16.copyWith(color: MyColors.WHITE),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -206,8 +226,7 @@ class Game extends StatelessWidget {
                   // This is needed for child height weight to work
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: MyColors.GRADIENT_RED),
+                      shape: BoxShape.circle, gradient: MyColors.GRADIENT_RED),
                   child: MySvgImage(
                     path: 'assets/thunderbolt.svg',
                     height: 20,
@@ -231,8 +250,7 @@ class Game extends StatelessWidget {
                     "@codechamp",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: MyFonts.bold_16
-                        .copyWith(color: MyColors.WHITE),
+                    style: MyFonts.bold_16.copyWith(color: MyColors.WHITE),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -266,8 +284,7 @@ class Game extends StatelessWidget {
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: MyFonts.bold_20
-                        .copyWith(color: MyColors.GREY_DARK),
+                    style: MyFonts.bold_20.copyWith(color: MyColors.GREY_DARK),
                   )),
               FlatButton(
                   shape: RoundedRectangleBorder(
@@ -276,8 +293,7 @@ class Game extends StatelessWidget {
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: MyFonts.bold_20
-                        .copyWith(color: MyColors.GREY_DARK),
+                    style: MyFonts.bold_20.copyWith(color: MyColors.GREY_DARK),
                   )),
               FlatButton(
                   shape: RoundedRectangleBorder(
@@ -286,8 +302,7 @@ class Game extends StatelessWidget {
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: MyFonts.bold_20
-                        .copyWith(color: MyColors.GREY_DARK),
+                    style: MyFonts.bold_20.copyWith(color: MyColors.GREY_DARK),
                   )),
               FlatButton(
                   shape: RoundedRectangleBorder(
@@ -296,10 +311,8 @@ class Game extends StatelessWidget {
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: MyFonts.bold_20
-                        .copyWith(color: MyColors.GREY_DARK),
+                    style: MyFonts.bold_20.copyWith(color: MyColors.GREY_DARK),
                   )),
-
             ],
           ),
         ),

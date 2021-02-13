@@ -20,17 +20,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Navigator.pushNamed(context, AppRouter.GAME,
                 arguments: state.response['matchId']);
           }
-
-          final snackBar = SnackBar(
-            content: const Text('Yay! A SnackBar!'),
-            action: SnackBarAction(
-              label: 'Undo',
-              onPressed: () {
-                // Some code to undo the change.
-              },
-            ),
-          );
-          Scaffold.of(context).showSnackBar(snackBar);
         },
         child: SafeArea(
           child: Scaffold(
