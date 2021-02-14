@@ -31,6 +31,8 @@ dependencies:
   retrofit: any
   json_annotation: any
   socket_io_client: ^2.0.0-beta.2
+  adhara_socket_io: ^0.4.2+1
+
 
 
   # UI

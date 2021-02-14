@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
@@ -146,23 +147,34 @@ class Waiting extends StatelessWidget {
   }
 
   void makeConnection() {
-    log('connect: this is checking log');
-
     final IO.Socket socket = IO.io(
-        'https://game.stage.codeblitz.app/', <String, dynamic>{'port': '443', 'path': '/game'});
+        'https://game.stage.codeblitz.app',
+        IO.OptionBuilder()
+            .setTransports(['websocket'])
+            .disableAutoConnect()
+            .disableForceNew()
+            .disableForceNewConnection()
+            .disableReconnection()
+            .build());
     socket.onConnect((data) {
-      log('connect: ${data}');
       log('connect: ${socket.id}');
       // socket.on('event', (ddata) => log(data.toString()));
       // socket.on('player_joined', (data) => log(data.toString()));
       // socket.on('question_result', (data) => log(data.toString()));
       // socket.on('round_start', (data) => log(data.toString()));
       // socket.on('game_ended', (data) => log(data.toString()));
-      // socket.on('game_error', (data) => log(data.toString()));
     });
+    socket.onConnectError((data) => {log('error: ${data}')});
+    socket.connect();
 
     socket.on('init', (data) => log(data.toString()));
     socket.emit('join', "xyz");
+    socket.on('game_error', (data) => log(data.toString()));
+
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      debugPrint(timer.tick.toString());
+      socket.emit('start', "xyz$timer");
+    });
   }
 }
 
