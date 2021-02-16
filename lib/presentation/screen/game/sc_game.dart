@@ -1,7 +1,12 @@
+import 'dart:developer';
+
+import 'package:code_blitz/model/repo/game_repository.dart';
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:code_blitz/presentation/custom_ui/custom_ui.dart';
+import 'package:code_blitz/presentation/screen/game/bloc.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class GameScreen extends StatefulWidget {
@@ -22,12 +27,27 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          color: MyColors.PRIMARY,
-          child: const Center(
-            child: Waiting(),
-          )),
+      body: BlocProvider<GameBloc>(
+          create: (context) =>
+              GameBloc(gameRepository: GameRepository(widget.id)),
+          child: BlocConsumer<GameBloc, GameState>(listener: (context, state) {
+            if (state is RoundInfo) {
+              log("this is actual log ${state.response}");
+            }
+          }, builder: (context, state) {
+            return AnimatedSwitcher(
+              duration: const Duration(milliseconds: 250),
+              child: buildGameView(context, state),
+            );
+          })),
     );
+  }
+
+  Widget buildGameView(BuildContext context, GameState state) {
+    if (state is RoundInfo) {
+      return Game();
+    } else
+      return Waiting();
   }
 }
 
@@ -62,8 +82,7 @@ class Waiting extends StatelessWidget {
               "@codechamp • 700 CR",
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style:
-                  MyFonts.medium_16.copyWith(color: MyColors.WHITE),
+              style: MyFonts.medium_16.copyWith(color: MyColors.WHITE),
               textAlign: TextAlign.center,
             ),
             Padding(
@@ -120,8 +139,7 @@ class Waiting extends StatelessWidget {
               "@codechamp • 700 CR",
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style:
-                  MyFonts.medium_16.copyWith(color: MyColors.WHITE),
+              style: MyFonts.medium_16.copyWith(color: MyColors.WHITE),
               textAlign: TextAlign.center,
             ),
             Padding(
@@ -194,8 +212,7 @@ class Game extends StatelessWidget {
                     "@codechamp",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: MyFonts.bold_16
-                        .copyWith(color: MyColors.WHITE),
+                    style: MyFonts.bold_16.copyWith(color: MyColors.WHITE),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -206,8 +223,7 @@ class Game extends StatelessWidget {
                   // This is needed for child height weight to work
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: MyColors.GRADIENT_RED),
+                      shape: BoxShape.circle, gradient: MyColors.GRADIENT_RED),
                   child: MySvgImage(
                     path: 'assets/thunderbolt.svg',
                     height: 20,
@@ -231,8 +247,7 @@ class Game extends StatelessWidget {
                     "@codechamp",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: MyFonts.bold_16
-                        .copyWith(color: MyColors.WHITE),
+                    style: MyFonts.bold_16.copyWith(color: MyColors.WHITE),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -266,8 +281,7 @@ class Game extends StatelessWidget {
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: MyFonts.bold_20
-                        .copyWith(color: MyColors.GREY_DARK),
+                    style: MyFonts.bold_20.copyWith(color: MyColors.GREY_DARK),
                   )),
               FlatButton(
                   shape: RoundedRectangleBorder(
@@ -276,8 +290,7 @@ class Game extends StatelessWidget {
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: MyFonts.bold_20
-                        .copyWith(color: MyColors.GREY_DARK),
+                    style: MyFonts.bold_20.copyWith(color: MyColors.GREY_DARK),
                   )),
               FlatButton(
                   shape: RoundedRectangleBorder(
@@ -286,8 +299,7 @@ class Game extends StatelessWidget {
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: MyFonts.bold_20
-                        .copyWith(color: MyColors.GREY_DARK),
+                    style: MyFonts.bold_20.copyWith(color: MyColors.GREY_DARK),
                   )),
               FlatButton(
                   shape: RoundedRectangleBorder(
@@ -296,10 +308,8 @@ class Game extends StatelessWidget {
                   child: Text(
                     'css',
                     textAlign: TextAlign.center,
-                    style: MyFonts.bold_20
-                        .copyWith(color: MyColors.GREY_DARK),
+                    style: MyFonts.bold_20.copyWith(color: MyColors.GREY_DARK),
                   )),
-
             ],
           ),
         ),

@@ -2,8 +2,6 @@ import 'package:code_blitz/app_config.dart';
 import 'package:code_blitz/model/repo/auth_repository.dart';
 import 'package:code_blitz/model/repo/home_repository.dart';
 import 'package:code_blitz/model/repo/user_repository.dart';
-import 'package:code_blitz/presentation/screen/home/sc_home.dart';
-import 'package:code_blitz/presentation/screen/login/sc_login.dart';
 import 'package:code_blitz/presentation/screen/signup/bloc/bloc.dart';
 import 'package:code_blitz/presentation/screen/splash/sc_splash.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
@@ -31,14 +29,17 @@ class MyApp extends StatelessWidget {
           splashColor: Colors.transparent,
           scaffoldBackgroundColor: MyColors.PRIMARY),
       onGenerateRoute: AppRouter.generateRoute,
-      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+      home: BlocConsumer<AuthenticationBloc, AuthenticationState>(
+        listener: (context, state) {
+          if (state is Unauthenticated) {
+            Navigator.pushNamed(context, AppRouter.LOGIN);
+          } else if (state is Authenticated) {
+            Navigator.pushNamed(context, AppRouter.HOME);
+          }
+        },
         builder: (context, state) {
           if (state is Uninitialized) {
             return SplashScreen();
-          } else if (state is Unauthenticated) {
-            return LoginScreen();
-          } else if (state is Authenticated) {
-            return HomeScreen();
           }
 
           return Center(child: Text('Unhandle State $state'));
