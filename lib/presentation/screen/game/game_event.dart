@@ -8,7 +8,7 @@ class GameEvent extends Equatable {
 }
 
 class LoadGame extends GameEvent {
-  final int id;
+  final String id;
 
   const LoadGame(this.id);
 
@@ -20,4 +20,33 @@ class LoadGame extends GameEvent {
     return 'LoadGame{id: $id}';
   }
 }
+
+class GameLoaded extends GameEvent {
+  final dynamic res;
+
+  const GameLoaded(this.res);
+
+  @override
+  List<Object> get props => [res];
+
+  @override
+  String toString() {
+    return 'GameLoaded{res: $res}';
+  }
+}
+
+class RoundStart extends GameEvent {
+  final dynamic res;
+
+  const RoundStart(this.res);
+
+  @override
+  List<Object> get props => [res];
+
+  @override
+  String toString() {
+    return 'RoundStart{res: $res}';
+  }
+}
+
 

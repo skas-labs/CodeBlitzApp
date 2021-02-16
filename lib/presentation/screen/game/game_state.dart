@@ -10,10 +10,26 @@ abstract class GameState extends Equatable {
 
 class GameLoading extends GameState {}
 
-class GameLoaded extends GameState {
-  final ProfileResponse response;
+class GameInfo extends GameState {
+  final dynamic response;
 
-  const GameLoaded(this.response);
+  const GameInfo(this.response);
+
+  @override
+  List<Object> get props {
+    return [response];
+  }
+
+  @override
+  String toString() {
+    return 'GameLoaded{response: $response}';
+  }
+}
+
+class RoundInfo extends GameState {
+  final dynamic response;
+
+  const RoundInfo(this.response);
 
   @override
   List<Object> get props {

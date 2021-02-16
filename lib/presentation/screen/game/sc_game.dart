@@ -1,12 +1,13 @@
-import 'dart:async';
 import 'dart:developer';
 
+import 'package:code_blitz/model/repo/game_repository.dart';
 import 'package:code_blitz/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:code_blitz/presentation/custom_ui/custom_ui.dart';
+import 'package:code_blitz/presentation/screen/game/bloc.dart';
 import 'package:code_blitz/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class GameScreen extends StatefulWidget {
   String id;
@@ -26,12 +27,27 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          color: MyColors.PRIMARY,
-          child: const Center(
-            child: Waiting(),
-          )),
+      body: BlocProvider<GameBloc>(
+          create: (context) =>
+              GameBloc(gameRepository: GameRepository(widget.id)),
+          child: BlocConsumer<GameBloc, GameState>(listener: (context, state) {
+            if (state is RoundInfo) {
+              log("this is actual log ${state.response}");
+            }
+          }, builder: (context, state) {
+            return AnimatedSwitcher(
+              duration: const Duration(milliseconds: 250),
+              child: buildGameView(context, state),
+            );
+          })),
     );
+  }
+
+  Widget buildGameView(BuildContext context, GameState state) {
+    if (state is RoundInfo) {
+      return Game();
+    } else
+      return Waiting();
   }
 }
 
@@ -77,7 +93,7 @@ class Waiting extends StatelessWidget {
                 child: UnicornButton(
                     radius: 10,
                     gradient: MyColors.GRADIENT_SECONDARY,
-                    onPressed: makeConnection,
+                    onPressed: null,
                     height: 30,
                     child: Text('Junior Dev'.toUpperCase(),
                         style: MyFonts.bold_16)),
@@ -144,37 +160,6 @@ class Waiting extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  void makeConnection() {
-    final IO.Socket socket = IO.io(
-        'https://game.stage.codeblitz.app',
-        IO.OptionBuilder()
-            .setTransports(['websocket'])
-            .disableAutoConnect()
-            .disableForceNew()
-            .disableForceNewConnection()
-            .disableReconnection()
-            .build());
-    socket.onConnect((data) {
-      log('connect: ${socket.id}');
-      // socket.on('event', (ddata) => log(data.toString()));
-      // socket.on('player_joined', (data) => log(data.toString()));
-      // socket.on('question_result', (data) => log(data.toString()));
-      // socket.on('round_start', (data) => log(data.toString()));
-      // socket.on('game_ended', (data) => log(data.toString()));
-    });
-    socket.onConnectError((data) => {log('error: ${data}')});
-    socket.connect();
-
-    socket.on('init', (data) => log(data.toString()));
-    socket.emit('join', "xyz");
-    socket.on('game_error', (data) => log(data.toString()));
-
-    Timer.periodic(Duration(seconds: 1), (timer) {
-      debugPrint(timer.tick.toString());
-      socket.emit('start', "xyz$timer");
-    });
   }
 }
 
